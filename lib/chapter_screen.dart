@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'notes_screen.dart';
 import 'formula_screen.dart';
+import 'mcq_screen.dart';
 
 class ChapterScreen extends StatelessWidget {
   final String subject;
@@ -31,11 +32,13 @@ class ChapterScreen extends StatelessWidget {
               chapter,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 28,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 6),
+
+            const SizedBox(height: 8),
+
             Text(
               subject,
               style: TextStyle(
@@ -43,13 +46,14 @@ class ChapterScreen extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
+
             const SizedBox(height: 24),
 
             buildCard(
               context,
               Icons.menu_book,
               "Quick Notes",
-              "NCERT summary",
+              "NCERT chapter summary",
               () {
                 Navigator.push(
                   context,
@@ -86,7 +90,17 @@ class ChapterScreen extends StatelessWidget {
               Icons.quiz,
               "NCERT MCQs",
               "Practice questions",
-              () => comingSoon(context, "MCQs"),
+              () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => MCQScreen(
+                      subject: subject,
+                      chapter: chapter,
+                    ),
+                  ),
+                );
+              },
             ),
 
             buildCard(
@@ -94,15 +108,19 @@ class ChapterScreen extends StatelessWidget {
               Icons.history_edu,
               "Previous Year Questions",
               "CBSE PYQs",
-              () => comingSoon(context, "PYQs"),
+              () {
+                comingSoon(context, "Previous Year Questions");
+              },
             ),
 
             buildCard(
               context,
               Icons.smart_toy,
               "Ask AI Doubt",
-              "Chat with StudyBuddy AI",
-              () => comingSoon(context, "AI Tutor"),
+              "AI tutor",
+              () {
+                comingSoon(context, "AI Tutor");
+              },
             ),
 
             buildCard(
@@ -110,7 +128,9 @@ class ChapterScreen extends StatelessWidget {
               Icons.camera_alt,
               "Scan Question",
               "Camera OCR",
-              () => comingSoon(context, "Camera Scanner"),
+              () {
+                comingSoon(context, "Camera Scanner");
+              },
             ),
 
             buildCard(
@@ -118,7 +138,9 @@ class ChapterScreen extends StatelessWidget {
               Icons.mic,
               "Voice Doubt",
               "Speak your question",
-              () => comingSoon(context, "Voice Assistant"),
+              () {
+                comingSoon(context, "Voice Assistant");
+              },
             ),
 
             const SizedBox(height: 20),
@@ -138,13 +160,13 @@ class ChapterScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: InkWell(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(22),
         onTap: onTap,
         child: Container(
           padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
             color: const Color(0xFF1A1A1A),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(22),
             border: Border.all(
               color: Colors.red.shade700,
               width: 1.5,
@@ -168,6 +190,7 @@ class ChapterScreen extends StatelessWidget {
                   size: 26,
                 ),
               ),
+
               const SizedBox(width: 16),
 
               Expanded(
@@ -182,7 +205,9 @@ class ChapterScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+
                     const SizedBox(height: 4),
+
                     Text(
                       subtitle,
                       style: const TextStyle(
@@ -209,7 +234,7 @@ class ChapterScreen extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: Colors.red.shade900,
-        content: Text("$feature will be available soon."),
+        content: Text("$feature is coming soon."),
       ),
     );
   }
