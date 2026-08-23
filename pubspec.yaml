@@ -1,21 +1,38 @@
-name: study_buddy_app
-description: StudyBuddy AI learning app
+name: studybuddy
+description: AI-powered NCERT Class 12 Study App
 publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
+  sdk: ">=3.4.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+
   cupertino_icons: ^1.0.8
+
+  google_generative_ai: ^0.4.7
+  flutter_markdown: ^0.7.3
+  speech_to_text: ^7.0.0
+  flutter_tts: ^4.0.2
+
+  camera: ^0.11.0
+  google_mlkit_text_recognition: ^0.14.0
+
+  shared_preferences: ^2.3.2
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/images/
