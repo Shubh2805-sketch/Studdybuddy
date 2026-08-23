@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'notes_screen.dart';
+import 'formula_screen.dart';
 
 class ChapterScreen extends StatelessWidget {
   final String subject;
@@ -17,8 +18,9 @@ class ChapterScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.red.shade900,
-        title: Text(chapter),
+        elevation: 0,
         centerTitle: true,
+        title: Text(chapter),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(18),
@@ -29,11 +31,11 @@ class ChapterScreen extends StatelessWidget {
               chapter,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 30,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 6),
             Text(
               subject,
               style: TextStyle(
@@ -43,10 +45,11 @@ class ChapterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            menuCard(
+            buildCard(
               context,
               Icons.menu_book,
               "Quick Notes",
+              "NCERT summary",
               () {
                 Navigator.push(
                   context,
@@ -60,58 +63,62 @@ class ChapterScreen extends StatelessWidget {
               },
             ),
 
-            menuCard(
+            buildCard(
               context,
               Icons.functions,
               "Formula Sheet",
+              "Important formulas",
               () {
-                comingSoon(context, "Formula Sheet");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => FormulaScreen(
+                      subject: subject,
+                      chapter: chapter,
+                    ),
+                  ),
+                );
               },
             ),
 
-            menuCard(
+            buildCard(
               context,
               Icons.quiz,
               "NCERT MCQs",
-              () {
-                comingSoon(context, "NCERT MCQs");
-              },
+              "Practice questions",
+              () => comingSoon(context, "MCQs"),
             ),
 
-            menuCard(
+            buildCard(
               context,
               Icons.history_edu,
               "Previous Year Questions",
-              () {
-                comingSoon(context, "PYQs");
-              },
+              "CBSE PYQs",
+              () => comingSoon(context, "PYQs"),
             ),
 
-            menuCard(
+            buildCard(
               context,
               Icons.smart_toy,
               "Ask AI Doubt",
-              () {
-                comingSoon(context, "AI Tutor");
-              },
+              "Chat with StudyBuddy AI",
+              () => comingSoon(context, "AI Tutor"),
             ),
 
-            menuCard(
+            buildCard(
               context,
               Icons.camera_alt,
               "Scan Question",
-              () {
-                comingSoon(context, "Camera Scanner");
-              },
+              "Camera OCR",
+              () => comingSoon(context, "Camera Scanner"),
             ),
 
-            menuCard(
+            buildCard(
               context,
               Icons.mic,
               "Voice Doubt",
-              () {
-                comingSoon(context, "Voice Assistant");
-              },
+              "Speak your question",
+              () => comingSoon(context, "Voice Assistant"),
             ),
 
             const SizedBox(height: 20),
@@ -121,21 +128,22 @@ class ChapterScreen extends StatelessWidget {
     );
   }
 
-  Widget menuCard(
+  Widget buildCard(
     BuildContext context,
     IconData icon,
     String title,
+    String subtitle,
     VoidCallback onTap,
   ) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 14),
+      padding: const EdgeInsets.only(bottom: 16),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
-            color: Colors.grey.shade900,
+            color: const Color(0xFF1A1A1A),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
               color: Colors.red.shade700,
@@ -145,27 +153,47 @@ class ChapterScreen extends StatelessWidget {
               BoxShadow(
                 color: Colors.red.withOpacity(0.25),
                 blurRadius: 12,
+                spreadRadius: 1,
               ),
             ],
           ),
           child: Row(
             children: [
-              Icon(
-                icon,
-                color: Colors.redAccent,
-                size: 34,
-              ),
-              const SizedBox(width: 18),
-              Expanded(
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
+              CircleAvatar(
+                radius: 24,
+                backgroundColor: Colors.red.shade800,
+                child: Icon(
+                  icon,
+                  color: Colors.white,
+                  size: 26,
                 ),
               ),
+              const SizedBox(width: 16),
+
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 19,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      subtitle,
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
               const Icon(
                 Icons.arrow_forward_ios,
                 color: Colors.white54,
