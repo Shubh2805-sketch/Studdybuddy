@@ -15,7 +15,7 @@ jobs:
           flutter-version: '3.24.0'
 
       - name: Create Flutter project
-        run: flutter create temp_app --project-name studybuddy
+        run: flutter create --project-name studybuddy temp_app
 
       - name: Copy project files
         run: |
@@ -32,7 +32,8 @@ jobs:
           cd temp_app
           flutter build apk --release
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
           name: StudyBuddy-APK
           path: temp_app/build/app/outputs/flutter-apk/app-release.apk
