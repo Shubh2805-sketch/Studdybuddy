@@ -7,62 +7,192 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color(0xFF080808),
+
       appBar: AppBar(
         title: const Text("StudyBuddy"),
-        centerTitle: true,
-        backgroundColor: Colors.red.shade900,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 16),
+            child: Icon(Icons.notifications_none),
+          ),
+        ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: GridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          children: const [
-            SubjectCard(
-              title: "Physics",
-              icon: Icons.bolt,
-              color: Colors.redAccent,
+
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFFB00020),
+        onPressed: () {},
+        child: const Icon(Icons.smart_toy),
+      ),
+
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+
+            const Text(
+              "Good Evening 👋",
+              style: TextStyle(
+                fontSize: 28,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            SubjectCard(
-              title: "Chemistry",
-              icon: Icons.science,
-              color: Colors.redAccent,
+
+            const SizedBox(height: 6),
+
+            const Text(
+              "Let's crack CBSE Class 12 today.",
+              style: TextStyle(color: Colors.white70),
             ),
-            SubjectCard(
-              title: "Maths",
-              icon: Icons.calculate,
-              color: Colors.redAccent,
+
+            const SizedBox(height: 22),
+
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.red.shade900,
+                    Colors.red.shade700,
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  Row(
+                    children: [
+                      Icon(Icons.local_fire_department,
+                          color: Colors.orange),
+                      SizedBox(width: 8),
+                      Text(
+                        "7 Day Streak",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 14),
+
+                  Text(
+                    "Today's Goal",
+                    style: TextStyle(color: Colors.white70),
+                  ),
+
+                  SizedBox(height: 8),
+
+                  LinearProgressIndicator(
+                    value: 0.6,
+                    backgroundColor: Colors.white24,
+                    color: Colors.white,
+                  ),
+
+                  SizedBox(height: 8),
+
+                  Text("3 of 5 chapters completed"),
+                ],
+              ),
             ),
-            SubjectCard(
-              title: "Revision",
-              icon: Icons.refresh,
-              color: Colors.redAccent,
+
+            const SizedBox(height: 26),
+
+            const Text(
+              "Subjects",
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
             ),
+
+            const SizedBox(height: 14),
+
+            GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              crossAxisSpacing: 14,
+              mainAxisSpacing: 14,
+              children: const [
+
+                SubjectTile(
+                  title: "Physics",
+                  icon: Icons.bolt,
+                ),
+
+                SubjectTile(
+                  title: "Chemistry",
+                  icon: Icons.science,
+                ),
+
+                SubjectTile(
+                  title: "Maths",
+                  icon: Icons.calculate,
+                ),
+
+                SubjectTile(
+                  title: "Revision",
+                  icon: Icons.auto_awesome,
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 26),
+
+            const Text(
+              "Quick Access",
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            quickCard(Icons.quiz, "Mock Test"),
+            quickCard(Icons.history_edu, "Previous Year Papers"),
+            quickCard(Icons.bookmarks, "Saved Questions"),
           ],
         ),
       ),
     );
   }
+
+  static Widget quickCard(IconData icon, String title) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      decoration: BoxDecoration(
+        color: const Color(0xFF181818),
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: Colors.red.shade700),
+      ),
+      child: ListTile(
+        leading: Icon(icon, color: Colors.redAccent),
+        title: Text(title),
+        trailing: const Icon(Icons.arrow_forward_ios),
+      ),
+    );
+  }
 }
 
-class SubjectCard extends StatelessWidget {
+class SubjectTile extends StatelessWidget {
   final String title;
   final IconData icon;
-  final Color color;
 
-  const SubjectCard({
+  const SubjectTile({
     super.key,
     required this.title,
     required this.icon,
-    required this.color,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(22),
       onTap: () {
         Navigator.push(
           context,
@@ -73,25 +203,37 @@ class SubjectCard extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade900,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.red.shade700, width: 2),
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFF222222),
+              Color(0xFF111111),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(22),
+          border: Border.all(color: Colors.redAccent),
           boxShadow: [
             BoxShadow(
               color: Colors.red.withOpacity(0.25),
-              blurRadius: 12,
+              blurRadius: 16,
+              spreadRadius: 1,
             ),
           ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 52, color: color),
+
+            Icon(
+              icon,
+              size: 50,
+              color: Colors.redAccent,
+            ),
+
             const SizedBox(height: 14),
+
             Text(
               title,
               style: const TextStyle(
-                color: Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
