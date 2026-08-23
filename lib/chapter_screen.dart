@@ -3,6 +3,7 @@ import 'notes_screen.dart';
 import 'formula_screen.dart';
 import 'mcq_screen.dart';
 import 'pyq_screen.dart';
+import 'ai_chat_screen.dart';
 
 class ChapterScreen extends StatelessWidget {
   final String subject;
@@ -17,9 +18,9 @@ class ChapterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color(0xFF080808),
       appBar: AppBar(
-        backgroundColor: Colors.red.shade900,
+        backgroundColor: const Color(0xFFB00020),
         elevation: 0,
         centerTitle: true,
         title: Text(chapter),
@@ -38,7 +39,7 @@ class ChapterScreen extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 8),
+            const SizedBox(height: 6),
 
             Text(
               subject,
@@ -48,13 +49,21 @@ class ChapterScreen extends StatelessWidget {
               ),
             ),
 
+            const SizedBox(height: 8),
+
+            const Text(
+              "Everything you need for this chapter in one place.",
+              style: TextStyle(color: Colors.white70),
+            ),
+
             const SizedBox(height: 25),
 
             buildCard(
               context,
               Icons.menu_book,
               "Quick Notes",
-              "NCERT chapter summary",
+              "NCERT summary with exam tips",
+              Colors.blueAccent,
               () {
                 Navigator.push(
                   context,
@@ -73,6 +82,7 @@ class ChapterScreen extends StatelessWidget {
               Icons.functions,
               "Formula Sheet",
               "Important formulas",
+              Colors.orangeAccent,
               () {
                 Navigator.push(
                   context,
@@ -90,7 +100,8 @@ class ChapterScreen extends StatelessWidget {
               context,
               Icons.quiz,
               "NCERT MCQs",
-              "Practice chapter-wise MCQs",
+              "Chapter-wise practice",
+              Colors.greenAccent,
               () {
                 Navigator.push(
                   context,
@@ -108,7 +119,8 @@ class ChapterScreen extends StatelessWidget {
               context,
               Icons.history_edu,
               "Previous Year Questions",
-              "CBSE 2018-2025 PYQs",
+              "CBSE 2018-2025",
+              Colors.amber,
               () {
                 Navigator.push(
                   context,
@@ -126,9 +138,18 @@ class ChapterScreen extends StatelessWidget {
               context,
               Icons.smart_toy,
               "Ask AI Doubt",
-              "Chat with StudyBuddy AI",
+              "Step-by-step NCERT tutor",
+              Colors.redAccent,
               () {
-                comingSoon(context, "AI Tutor");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => AIChatScreen(
+                      subject: subject,
+                      chapter: chapter,
+                    ),
+                  ),
+                );
               },
             ),
 
@@ -136,9 +157,14 @@ class ChapterScreen extends StatelessWidget {
               context,
               Icons.camera_alt,
               "Scan Question",
-              "Solve using camera",
+              "Camera OCR (next update)",
+              Colors.purpleAccent,
               () {
-                comingSoon(context, "Camera Scanner");
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Camera OCR is coming next."),
+                  ),
+                );
               },
             ),
 
@@ -146,9 +172,14 @@ class ChapterScreen extends StatelessWidget {
               context,
               Icons.mic,
               "Voice Doubt",
-              "Ask using microphone",
+              "Speak your question",
+              Colors.cyanAccent,
               () {
-                comingSoon(context, "Voice Assistant");
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Voice assistant is coming next."),
+                  ),
+                );
               },
             ),
 
@@ -164,6 +195,7 @@ class ChapterScreen extends StatelessWidget {
     IconData icon,
     String title,
     String subtitle,
+    Color iconColor,
     VoidCallback onTap,
   ) {
     return Padding(
@@ -174,16 +206,21 @@ class ChapterScreen extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
-            color: const Color(0xFF1A1A1A),
+            gradient: const LinearGradient(
+              colors: [
+                Color(0xFF232323),
+                Color(0xFF121212),
+              ],
+            ),
             borderRadius: BorderRadius.circular(22),
             border: Border.all(
-              color: Colors.red.shade700,
-              width: 1.5,
+              color: Colors.redAccent,
+              width: 1.3,
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.red.withOpacity(0.25),
-                blurRadius: 12,
+                color: Colors.red.withOpacity(0.22),
+                blurRadius: 14,
                 spreadRadius: 1,
               ),
             ],
@@ -191,12 +228,12 @@ class ChapterScreen extends StatelessWidget {
           child: Row(
             children: [
               CircleAvatar(
-                radius: 24,
-                backgroundColor: Colors.red.shade800,
+                radius: 25,
+                backgroundColor: Colors.red.shade900,
                 child: Icon(
                   icon,
-                  color: Colors.white,
-                  size: 26,
+                  color: iconColor,
+                  size: 28,
                 ),
               ),
 
@@ -214,9 +251,7 @@ class ChapterScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-
-                    const SizedBox(height: 4),
-
+                    const SizedBox(height: 5),
                     Text(
                       subtitle,
                       style: const TextStyle(
@@ -231,19 +266,11 @@ class ChapterScreen extends StatelessWidget {
               const Icon(
                 Icons.arrow_forward_ios,
                 color: Colors.white54,
+                size: 18,
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  void comingSoon(BuildContext context, String feature) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: Colors.red.shade900,
-        content: Text("$feature coming soon."),
       ),
     );
   }
