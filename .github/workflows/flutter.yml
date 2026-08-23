@@ -12,28 +12,23 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
+          flutter-version: "3.24.0"
 
-      - name: Create Flutter project
-        run: flutter create --project-name studybuddy temp_app
-
-      - name: Copy project files
+      - name: Install Android SDK 35
         run: |
-          cp -r lib temp_app/
-          cp pubspec.yaml temp_app/
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+            "platforms;android-35" \
+            "build-tools;35.0.0"
 
       - name: Get packages
-        run: |
-          cd temp_app
-          flutter pub get
+        run: flutter pub get
 
       - name: Build APK
-        run: |
-          cd temp_app
-          flutter build apk --release
+        run: flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: StudyBuddy-APK
-          path: temp_app/build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
