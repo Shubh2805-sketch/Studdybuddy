@@ -40,9 +40,9 @@ class ChapterScreen extends StatelessWidget {
 
           _buildCard(
             context,
-            title: "Quick Notes",
-            icon: Icons.menu_book,
-            onTap: () {
+            "Quick Notes",
+            Icons.menu_book,
+            () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -57,9 +57,9 @@ class ChapterScreen extends StatelessWidget {
 
           _buildCard(
             context,
-            title: "Formula Sheet",
-            icon: Icons.functions,
-            onTap: () {
+            "Formula Sheet",
+            Icons.functions,
+            () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text("Formula Sheet coming soon"),
@@ -70,9 +70,9 @@ class ChapterScreen extends StatelessWidget {
 
           _buildCard(
             context,
-            title: "NCERT MCQs",
-            icon: Icons.quiz,
-            onTap: () {
+            "NCERT MCQs",
+            Icons.quiz,
+            () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -87,9 +87,9 @@ class ChapterScreen extends StatelessWidget {
 
           _buildCard(
             context,
-            title: "Previous Year Questions",
-            icon: Icons.history_edu,
-            onTap: () {
+            "Previous Year Questions",
+            Icons.history_edu,
+            () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text("PYQs coming soon"),
@@ -100,12 +100,12 @@ class ChapterScreen extends StatelessWidget {
 
           _buildCard(
             context,
-            title: "Ask AI Doubt",
-            icon: Icons.smart_toy,
-            onTap: () {
+            "Ask AI Doubt",
+            Icons.smart_toy,
+            () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text("AI feature coming in next update"),
+                  content: Text("AI feature coming soon"),
                 ),
               );
             },
@@ -113,12 +113,12 @@ class ChapterScreen extends StatelessWidget {
 
           _buildCard(
             context,
-            title: "Scan Question",
-            icon: Icons.camera_alt,
-            onTap: () {
+            "Scan Question",
+            Icons.camera_alt,
+            () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text("Camera Scanner coming soon"),
+                  content: Text("Scanner coming soon"),
                 ),
               );
             },
@@ -129,11 +129,11 @@ class ChapterScreen extends StatelessWidget {
   }
 
   Widget _buildCard(
-    BuildContext context, {
-    required String title,
-    required IconData icon,
-    required VoidCallback onTap,
-  }) {
+    BuildContext context,
+    String title,
+    IconData icon,
+    VoidCallback onTap,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 18),
       child: InkWell(
@@ -150,7 +150,7 @@ class ChapterScreen extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.redAccent.withValues(alpha: 0.25),
+                color: Colors.redAccent.withOpacity(0.25),
                 blurRadius: 12,
                 spreadRadius: 1,
               ),
@@ -158,7 +158,11 @@ class ChapterScreen extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(icon, color: Colors.redAccent, size: 34),
+              Icon(
+                icon,
+                color: Colors.redAccent,
+                size: 34,
+              ),
               const SizedBox(width: 18),
               Expanded(
                 child: Text(
