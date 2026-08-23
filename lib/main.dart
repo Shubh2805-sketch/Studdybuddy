@@ -14,8 +14,18 @@ class StudyBuddyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'StudyBuddy',
       theme: ThemeData(
-        colorSchemeSeed: Colors.blue,
         useMaterial3: true,
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xFF080808),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFB00020),
+          brightness: Brightness.dark,
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFFB00020),
+          foregroundColor: Colors.white,
+          centerTitle: true,
+        ),
       ),
       home: const HomeScreen(),
     );
