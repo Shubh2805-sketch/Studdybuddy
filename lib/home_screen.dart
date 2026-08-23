@@ -77,4 +77,28 @@ class SubjectCard extends StatelessWidget {
             Icon(
               icon,
               size: 52,
-              color: Colors.redAccent
+              color: Colors.redAccent,
+            ),
+            const SizedBox(height: 14),
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 6),
+            const Text(
+              "NCERT Class 12",
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 12,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
