@@ -1,26 +1,38 @@
 import 'package:flutter/material.dart';
+import 'subject_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("StudyBuddy"),
+    return Theme(
+      data: ThemeData(
+        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.black,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF8B0000),
+          foregroundColor: Colors.white,
+          centerTitle: true,
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: GridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 12,
-          mainAxisSpacing: 12,
-          children: const [
-            SubjectCard(title: "Physics", icon: Icons.bolt),
-            SubjectCard(title: "Chemistry", icon: Icons.science),
-            SubjectCard(title: "Maths", icon: Icons.calculate),
-            SubjectCard(title: "Revision", icon: Icons.refresh),
-          ],
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("StudyBuddy"),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: GridView.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 14,
+            mainAxisSpacing: 14,
+            children: const [
+              SubjectCard(title: "Physics", icon: Icons.bolt),
+              SubjectCard(title: "Chemistry", icon: Icons.science),
+              SubjectCard(title: "Maths", icon: Icons.calculate),
+              SubjectCard(title: "Revision", icon: Icons.refresh),
+            ],
+          ),
         ),
       ),
     );
@@ -40,60 +52,29 @@ class SubjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4,
+      color: const Color(0xFF1A1A1A),
+      elevation: 8,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(20),
+        side: const BorderSide(
+          color: Color(0xFF8B0000),
+          width: 2,
+        ),
       ),
       child: InkWell(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(20),
         onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SubjectScreen(title: title),
+              builder: (_) => SubjectScreen(title: title),
             ),
           );
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 48),
-            const SizedBox(height: 12),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class SubjectScreen extends StatelessWidget {
-  final String title;
-
-  const SubjectScreen({
-    super.key,
-    required this.title,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(
-        child: Text(
-          "Welcome to $title",
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
-}
+            Icon(
+              icon,
+              size: 52,
+              color: Colors.redAccent
