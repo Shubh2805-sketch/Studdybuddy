@@ -1,26 +1,20 @@
 plugins {
     id "com.android.application"
-    id "kotlin-android"
+    id "org.jetbrains.kotlin.android"
     id "dev.flutter.flutter-gradle-plugin"
 }
 
 android {
-    namespace "com.studybuddy.app"
+    namespace "com.example.studybuddy"
 
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.studybuddy.app"
+        applicationId "com.example.studybuddy"
         minSdk 24
         targetSdk 35
         versionCode 1
         versionName "1.0"
-    }
-
-    buildTypes {
-        release {
-            signingConfig signingConfigs.debug
-        }
     }
 
     compileOptions {
@@ -30,6 +24,12 @@ android {
 
     kotlinOptions {
         jvmTarget = "17"
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
     }
 }
 
