@@ -12,8 +12,8 @@ android {
         applicationId "com.example.studybuddy"
         minSdk 21
         targetSdk 35
-        versionCode 1
-        versionName "1.0"
+        versionCode flutter.versionCode
+        versionName flutter.versionName
     }
 
     compileOptions {
@@ -28,7 +28,6 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.debug
-
             minifyEnabled false
             shrinkResources false
         }
@@ -37,8 +36,4 @@ android {
 
 flutter {
     source "../.."
-}
-
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.24"
 }
