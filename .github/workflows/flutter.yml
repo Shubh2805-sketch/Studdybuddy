@@ -20,7 +20,7 @@ jobs:
         run: rm -rf android
 
       - name: Generate fresh Flutter project
-        run: flutter create .
+        run: flutter create
 
       - name: Get packages
         run: flutter pub get
