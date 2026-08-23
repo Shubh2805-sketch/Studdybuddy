@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'notes_screen.dart';
 import 'formula_screen.dart';
 import 'mcq_screen.dart';
+import 'pyq_screen.dart';
 
 class ChapterScreen extends StatelessWidget {
   final String subject;
@@ -47,7 +48,7 @@ class ChapterScreen extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 24),
+            const SizedBox(height: 25),
 
             buildCard(
               context,
@@ -89,7 +90,7 @@ class ChapterScreen extends StatelessWidget {
               context,
               Icons.quiz,
               "NCERT MCQs",
-              "Practice questions",
+              "Practice chapter-wise MCQs",
               () {
                 Navigator.push(
                   context,
@@ -107,9 +108,17 @@ class ChapterScreen extends StatelessWidget {
               context,
               Icons.history_edu,
               "Previous Year Questions",
-              "CBSE PYQs",
+              "CBSE 2018-2025 PYQs",
               () {
-                comingSoon(context, "Previous Year Questions");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => PYQScreen(
+                      subject: subject,
+                      chapter: chapter,
+                    ),
+                  ),
+                );
               },
             ),
 
@@ -117,7 +126,7 @@ class ChapterScreen extends StatelessWidget {
               context,
               Icons.smart_toy,
               "Ask AI Doubt",
-              "AI tutor",
+              "Chat with StudyBuddy AI",
               () {
                 comingSoon(context, "AI Tutor");
               },
@@ -127,7 +136,7 @@ class ChapterScreen extends StatelessWidget {
               context,
               Icons.camera_alt,
               "Scan Question",
-              "Camera OCR",
+              "Solve using camera",
               () {
                 comingSoon(context, "Camera Scanner");
               },
@@ -137,7 +146,7 @@ class ChapterScreen extends StatelessWidget {
               context,
               Icons.mic,
               "Voice Doubt",
-              "Speak your question",
+              "Ask using microphone",
               () {
                 comingSoon(context, "Voice Assistant");
               },
@@ -234,7 +243,7 @@ class ChapterScreen extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: Colors.red.shade900,
-        content: Text("$feature is coming soon."),
+        content: Text("$feature coming soon."),
       ),
     );
   }
