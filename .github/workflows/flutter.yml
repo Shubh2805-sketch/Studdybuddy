@@ -2,8 +2,7 @@ name: Build APK
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -24,7 +23,14 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.24.0"
-          channel: stable
+
+      - name: Install Android SDK 35
+        run: |
+          export ANDROID_HOME=$ANDROID_SDK_ROOT
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+            "platforms;android-35" \
+            "build-tools;35.0.0"
 
       - name: Flutter Pub Get
         run: flutter pub get
