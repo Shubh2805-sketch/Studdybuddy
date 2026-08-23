@@ -2,8 +2,6 @@ name: Build StudyBuddy APK
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
 
 jobs:
   build:
@@ -14,21 +12,27 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.24.0"
+          flutter-version: '3.24.0'
 
-      - name: Remove broken Android folder
-        run: rm -rf android
+      - name: Create Flutter project
+        run: flutter create temp_app --project-name studybuddy
 
-      - name: Generate fresh Flutter project
-       run: flutter create --project-name studybuddy .
+      - name: Copy project files
+        run: |
+          cp -r lib temp_app/
+          cp pubspec.yaml temp_app/
 
       - name: Get packages
-        run: flutter pub get
+        run: |
+          cd temp_app
+          flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release
+        run: |
+          cd temp_app
+          flutter build apk --release
 
       - uses: actions/upload-artifact@v4
         with:
           name: StudyBuddy-APK
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: temp_app/build/app/outputs/flutter-apk/app-release.apk
