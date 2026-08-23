@@ -1,1 +1,0 @@
-import 'package:flutter/material.dart'; class StatsScreen extends StatelessWidget{const StatsScreen({super.key}); @override Widget build(BuildContext c)=>Scaffold(appBar:AppBar(title:const Text('Score & XP')),body:const Center(child:Text('Stats coming soon')));} 
