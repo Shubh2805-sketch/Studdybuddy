@@ -1,34 +1,33 @@
 import 'package:flutter/material.dart';
+import 'home_screen.dart';
 
 void main() {
-  runApp(const StudyBuddyTestApp());
+  runApp(const StudyBuddyApp());
 }
 
-class StudyBuddyTestApp extends StatelessWidget {
-  const StudyBuddyTestApp({super.key});
+class StudyBuddyApp extends StatelessWidget {
+  const StudyBuddyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'StudyBuddy',
-      theme: ThemeData.dark(),
-      home: Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          title: const Text('StudyBuddy'),
-          backgroundColor: Colors.red,
+      theme: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xFF080808),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFB00020),
+          brightness: Brightness.dark,
         ),
-        body: const Center(
-          child: Text(
-            'StudyBuddy is working!',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 26,
-            ),
-          ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFFB00020),
+          foregroundColor: Colors.white,
+          centerTitle: true,
         ),
       ),
+      home: const HomeScreen(),
     );
   }
 }
