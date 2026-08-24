@@ -10,64 +10,216 @@ class NotesScreen extends StatelessWidget {
     required this.chapter,
   });
 
+  List<NoteSection> _getNotes() {
+    if (subject == 'Physics') {
+      return [
+        NoteSection(
+          '🎯 Chapter Overview',
+          'Understand the concept first, then learn the formulas and practise numerical questions.',
+        ),
+        NoteSection(
+          '⚡ Key Concepts',
+          'Electric field is the force experienced by a unit positive test charge.',
+        ),
+        NoteSection(
+          '📌 Important Formula',
+          'E = F/q\n\nFor a point charge:\nE = kq/r²',
+        ),
+        NoteSection(
+          '🔋 Electric Potential',
+          'Electric potential is the work done per unit positive test charge in bringing it from infinity to a point.\n\nV = W/q\n\nFor a point charge:\nV = kq/r',
+        ),
+        NoteSection(
+          '🔌 Capacitance',
+          'Capacitance is the charge stored per unit potential difference.\n\nC = Q/V\n\nFor a parallel plate capacitor in vacuum:\nC = ε₀A/d',
+        ),
+        NoteSection(
+          '🧠 Exam Tip',
+          'In numerical questions, always write the formula first, substitute the values with units, and write the final answer with the correct SI unit.',
+        ),
+      ];
+    }
+
+    if (subject == 'Chemistry') {
+      return [
+        NoteSection(
+          '🎯 Chapter Overview',
+          'Focus on definitions, reaction mechanisms, important reagents, named reactions and NCERT exceptions.',
+        ),
+        NoteSection(
+          '⚗️ Carbonyl Compounds',
+          'The carbonyl carbon is electrophilic because oxygen is more electronegative than carbon.',
+        ),
+        NoteSection(
+          '📌 Aldehydes vs Ketones',
+          'Aldehydes are generally more reactive towards nucleophilic addition than ketones because they have less steric hindrance and fewer electron-releasing alkyl groups.',
+        ),
+        NoteSection(
+          '🧪 Benzaldehyde',
+          'Benzaldehyde is less reactive than propenal because conjugation with the benzene ring delocalises electron density and reduces the electrophilic character of the carbonyl carbon.',
+        ),
+        NoteSection(
+          '🔥 Oxidation',
+          'Aldehydes can generally be oxidised to corresponding carboxylic acids.',
+        ),
+        NoteSection(
+          '🧠 Exam Tip',
+          'For organic chemistry, learn the reagent, reaction condition, product and reason together rather than memorising the product alone.',
+        ),
+      ];
+    }
+
+    return [
+      NoteSection(
+        '🎯 Chapter Overview',
+        'Understand the definition, identify the mathematical operation involved and then practise standard NCERT examples.',
+      ),
+      NoteSection(
+        '📌 Derivative',
+        'A derivative represents the instantaneous rate of change of a quantity with respect to another quantity.',
+      ),
+      NoteSection(
+        '∫ Important Formula',
+        'd/dx (xⁿ) = nxⁿ⁻¹\n\n∫xⁿ dx = xⁿ⁺¹/(n+1) + C, for n ≠ -1',
+      ),
+      NoteSection(
+        '📈 Continuity',
+        'A function f(x) is continuous at x = a when:\n\nlim x→a f(x) = f(a)',
+      ),
+      NoteSection(
+        '🧠 Problem-Solving Method',
+        'First identify what is given. Then identify what is required. Select the relevant formula or theorem and solve step by step.',
+      ),
+      NoteSection(
+        '⭐ Exam Tip',
+        'Do not skip intermediate steps in board examinations. Clear mathematical working can help you secure method marks.',
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
-    final note = getNotes(subject, chapter);
+    final sections = _getNotes();
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color(0xFF08090C),
       appBar: AppBar(
-        backgroundColor: Colors.red.shade900,
-        title: Text(chapter),
-        centerTitle: true,
+        title: const Text(
+          'Quick Notes',
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+          ),
+        ),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(18),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.fromLTRB(18, 18, 18, 30),
           children: [
-            Text(
-              chapter,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color(0xFF5B0A18),
+                    Color(0xFF19080D),
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(24),
+                border: Border.all(
+                  color: const Color(0xFF8E2638),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'QUICK REVISION',
+                    style: TextStyle(
+                      color: Color(0xFFFF8793),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 1.5,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    chapter,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    '$subject • CBSE Class 12',
+                    style: const TextStyle(
+                      color: Colors.white60,
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 8),
-            Text(
-              subject,
-              style: TextStyle(
-                color: Colors.red.shade300,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(height: 24),
 
-            buildCard("📘 Chapter Overview", note["overview"]!),
-            buildCard("⭐ Key Points", note["points"]!),
-            buildCard("📐 Important Formula", note["formula"]!),
-            buildCard("📝 Exam Tip", note["tip"]!),
-            buildCard("🧠 Memory Trick", note["trick"]!),
+            const SizedBox(height: 20),
+
+            ...sections.map(
+              (section) => _noteCard(section),
+            ),
+
+            const SizedBox(height: 8),
+
+            Container(
+              padding: const EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: const Color(0xFF15171D),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(
+                  color: const Color(0xFF30252A),
+                ),
+              ),
+              child: const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.lightbulb_rounded,
+                    color: Color(0xFFFFC857),
+                  ),
+                  SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      'Active Recall: close the notes and explain the main concept without looking. Then attempt an MCQ.',
+                      style: TextStyle(
+                        color: Colors.white70,
+                        height: 1.5,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget buildCard(String title, String text) {
+  Widget _noteCard(NoteSection section) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 18),
+      margin: const EdgeInsets.only(bottom: 14),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: const Color(0xFF1A1A1A),
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: Colors.red.shade700),
-        boxShadow: [
+        color: const Color(0xFF15171D),
+        borderRadius: BorderRadius.circular(19),
+        border: Border.all(
+          color: const Color(0xFF30252A),
+        ),
+        boxShadow: const [
           BoxShadow(
-            color: Colors.red.withOpacity(0.2),
-            blurRadius: 10,
-            spreadRadius: 1,
+            color: Color(0x44000000),
+            blurRadius: 14,
+            offset: Offset(0, 7),
           ),
         ],
       ),
@@ -75,19 +227,19 @@ class NotesScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            title,
+            section.title,
             style: const TextStyle(
-              color: Colors.redAccent,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 10),
           Text(
-            text,
+            section.content,
             style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
+              fontSize: 15,
+              color: Colors.white70,
               height: 1.6,
             ),
           ),
@@ -95,77 +247,14 @@ class NotesScreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  Map<String, String> getNotes(String subject, String chapter) {
+class NoteSection {
+  final String title;
+  final String content;
 
-    if (chapter == "Electric Charges and Fields") {
-      return {
-        "overview":
-            "This chapter explains electric charge, Coulomb's law, electric field, electric field lines and Gauss's law.",
-        "points":
-            "• Like charges repel.\n"
-            "• Unlike charges attract.\n"
-            "• Electric field points from + to -.\n"
-            "• Field inside a conductor is zero.\n"
-            "• Gauss's law is important for derivations.",
-        "formula":
-            "F = kq₁q₂/r²\nE = F/q\nE = kQ/r²\nΦ = Q/ε₀",
-        "tip":
-            "Practice derivations of electric field due to line charge, plane sheet and spherical shell.",
-        "trick":
-            "Remember 'PLUS pushes, MINUS pulls' for electric field direction."
-      };
-    }
-
-    if (chapter == "Inverse Trigonometric Functions") {
-      return {
-        "overview":
-            "Learn principal values, domains, ranges and important identities.",
-        "points":
-            "• sin⁻¹x range = [-π/2, π/2]\n"
-            "• cos⁻¹x range = [0, π]\n"
-            "• tan⁻¹x range = (-π/2, π/2)",
-        "formula":
-            "sin⁻¹x + cos⁻¹x = π/2\n"
-            "tan⁻¹x + cot⁻¹x = π/2",
-        "tip":
-            "Always check principal value before solving.",
-        "trick":
-            "Remember 'SCT' = Sin, Cos, Tan principal ranges."
-      };
-    }
-
-    if (chapter == "Solutions") {
-      return {
-        "overview":
-            "Study concentration terms, Raoult's law and colligative properties.",
-        "points":
-            "• Mole fraction has no unit.\n"
-            "• Raoult's law applies to ideal solutions.\n"
-            "• Elevation in boiling point and depression in freezing point are important.",
-        "formula":
-            "P = XP°\nΔTb = Kbm\nΔTf = Kfm",
-        "tip":
-            "Numericals from concentration conversion are frequently asked.",
-        "trick":
-            "Remember 'BP Up, FP Down'."
-      };
-    }
-
-    return {
-      "overview":
-          "NCERT quick revision notes for $chapter.",
-      "points":
-          "• Read NCERT diagrams carefully.\n"
-          "• Memorize definitions.\n"
-          "• Learn important derivations.\n"
-          "• Practice NCERT examples.",
-      "formula":
-          "Important formulas of $chapter will appear here.",
-      "tip":
-          "Revise this chapter for 15 minutes before attempting MCQs.",
-      "trick":
-          "Create a one-line summary after every topic."
-    };
-  }
+  const NoteSection(
+    this.title,
+    this.content,
+  );
 }
