@@ -1,26 +1,32 @@
 import 'package:flutter/material.dart';
+
 import 'subject_screen.dart';
-import 'stats_screen.dart';
 import 'revision_screen.dart';
+import 'stats_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  static const Color backgroundColor = Color(0xFF080808);
+  static const Color cardColor = Color(0xFF19191D);
+  static const Color accentColor = Color(0xFFFF4D5A);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: const Color(0xFFB71C1C),
+        backgroundColor: accentColor,
         foregroundColor: Colors.white,
         elevation: 0,
         title: const Text(
           'StudyBuddy',
           style: TextStyle(
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -29,10 +35,10 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Welcome to StudyBuddy 👋',
+                'Your Study Companion',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 28,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -40,14 +46,14 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 8),
 
               const Text(
-                'Learn smarter. Practice better. Achieve more.',
+                'Learn • Practice • Achieve',
                 style: TextStyle(
                   color: Colors.white70,
-                  fontSize: 17,
+                  fontSize: 16,
                 ),
               ),
 
-              const SizedBox(height: 28),
+              const SizedBox(height: 25),
 
               _buildMainCard(
                 context,
@@ -58,7 +64,9 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => const SubjectScreen(),
+                      builder: (_) => const SubjectScreen(
+                        subject: 'Physics',
+                      ),
                     ),
                   );
                 },
@@ -69,8 +77,8 @@ class HomeScreen extends StatelessWidget {
               _buildMainCard(
                 context,
                 title: 'Revision',
-                subtitle: 'Quickly revise important topics',
-                icon: Icons.refresh_rounded,
+                subtitle: 'Revise important topics quickly',
+                icon: Icons.replay_rounded,
                 onTap: () {
                   Navigator.push(
                     context,
@@ -85,8 +93,8 @@ class HomeScreen extends StatelessWidget {
 
               _buildMainCard(
                 context,
-                title: 'My Progress',
-                subtitle: 'Check your study statistics',
+                title: 'Statistics',
+                subtitle: 'Track your learning progress',
                 icon: Icons.bar_chart_rounded,
                 onTap: () {
                   Navigator.push(
@@ -98,7 +106,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 25),
 
               const Text(
                 'Subjects',
@@ -109,48 +117,28 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 14),
+              const SizedBox(height: 15),
 
-              Row(
-                children: [
-                  Expanded(
-                    child: _buildSubjectCard(
-                      context,
-                      'Physics',
-                      Icons.bolt_rounded,
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: _buildSubjectCard(
-                      context,
-                      'Chemistry',
-                      Icons.science_rounded,
-                    ),
-                  ),
-                ],
+              _buildSubjectCard(
+                context,
+                'Physics',
+                Icons.bolt_rounded,
               ),
 
               const SizedBox(height: 12),
 
-              Row(
-                children: [
-                  Expanded(
-                    child: _buildSubjectCard(
-                      context,
-                      'Mathematics',
-                      Icons.calculate_rounded,
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: _buildSubjectCard(
-                      context,
-                      'Biology',
-                      Icons.biotech_rounded,
-                    ),
-                  ),
-                ],
+              _buildSubjectCard(
+                context,
+                'Chemistry',
+                Icons.science_rounded,
+              ),
+
+              const SizedBox(height: 12),
+
+              _buildSubjectCard(
+                context,
+                'Mathematics',
+                Icons.calculate_rounded,
               ),
             ],
           ),
@@ -166,78 +154,77 @@ class HomeScreen extends StatelessWidget {
     required IconData icon,
     required VoidCallback onTap,
   }) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(22),
-        onTap: onTap,
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: const Color(0xFF1B1B1F),
-            borderRadius: BorderRadius.circular(22),
-            border: Border.all(
-              color: const Color(0xFFFF3B4A),
-              width: 1.5,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(22),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: cardColor,
+          borderRadius: BorderRadius.circular(22),
+          border: Border.all(
+            color: accentColor,
+            width: 1.5,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: accentColor.withOpacity(0.18),
+              blurRadius: 14,
+              spreadRadius: 1,
             ),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xFFFF3B4A).withOpacity(0.18),
-                blurRadius: 14,
-                spreadRadius: 1,
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 58,
+              height: 58,
+              decoration: BoxDecoration(
+                color: accentColor.withOpacity(0.15),
+                borderRadius: BorderRadius.circular(16),
               ),
-            ],
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: 58,
-                height: 58,
-                decoration: BoxDecoration(
-                  color: const Color(0xFFFF3B4A).withOpacity(0.15),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: const Icon(
-                  Icons.menu_book_rounded,
-                  color: Color(0xFFFF5360),
-                  size: 32,
-                ),
+              child: Icon(
+                icon,
+                color: accentColor,
+                size: 32,
               ),
+            ),
 
-              const SizedBox(width: 18),
+            const SizedBox(width: 16),
 
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 21,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(height: 5),
-                    Text(
-                      subtitle,
-                      style: const TextStyle(
-                        color: Colors.white70,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  ),
 
-              const Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: Colors.white54,
-                size: 20,
+                  const SizedBox(height: 5),
+
+                  Text(
+                    subtitle,
+                    style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+
+            const Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: Colors.white60,
+              size: 20,
+            ),
+          ],
         ),
       ),
     );
@@ -248,51 +235,59 @@ class HomeScreen extends StatelessWidget {
     String subject,
     IconData icon,
   ) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(18),
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => SubjectScreen(
-                subject: subject,
-              ),
-            ),
-          );
-        },
-        child: Container(
-          height: 125,
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: const Color(0xFF17171B),
-            borderRadius: BorderRadius.circular(18),
-            border: Border.all(
-              color: const Color(0xFFFF3B4A).withOpacity(0.8),
-              width: 1.3,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => SubjectScreen(
+              subject: subject,
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                color: const Color(0xFFFF5360),
-                size: 34,
-              ),
-              const SizedBox(height: 10),
-              Text(
+        );
+      },
+      borderRadius: BorderRadius.circular(18),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(
+          horizontal: 18,
+          vertical: 17,
+        ),
+        decoration: BoxDecoration(
+          color: cardColor,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(
+            color: accentColor.withOpacity(0.8),
+            width: 1.2,
+          ),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: accentColor,
+              size: 30,
+            ),
+
+            const SizedBox(width: 15),
+
+            Expanded(
+              child: Text(
                 subject,
-                textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 16,
+                  fontSize: 19,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-            ],
-          ),
+            ),
+
+            const Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: Colors.white54,
+              size: 18,
+            ),
+          ],
         ),
       ),
     );
