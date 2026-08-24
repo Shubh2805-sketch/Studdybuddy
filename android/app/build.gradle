@@ -5,20 +5,20 @@ plugins {
 }
 
 android {
-    namespace "com.example.studybuddy"
-    compileSdk 35
+    namespace = "com.example.studybuddy"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId "com.example.studybuddy"
-        minSdk 21
-        targetSdk 35
-        versionCode 1
-        versionName "1.0"
+        applicationId = "com.example.studybuddy"
+        minSdk = 21
+        targetSdk = 35
+        versionCode = 1
+        versionName = "1.0"
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            signingConfig = signingConfigs.debug
             minifyEnabled false
             shrinkResources false
         }
@@ -35,5 +35,5 @@ android {
 }
 
 flutter {
-    source "../.."
+    source = "../.."
 }
