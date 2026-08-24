@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
+import 'gemini_service.dart';
 
 class AiScreen extends StatefulWidget {
   final String subject;
@@ -16,93 +16,46 @@ class AiScreen extends StatefulWidget {
 }
 
 class _AiScreenState extends State<AiScreen> {
-  final TextEditingController controller = TextEditingController();
+  final TextEditingController questionController =
+      TextEditingController();
 
+  String answer = '';
   bool loading = false;
-  String answer = "";
 
   Future<void> askAI() async {
-    final question = controller.text.trim();
+    final question = questionController.text.trim();
 
     if (question.isEmpty) {
       setState(() {
-        answer = "Please type your question first.";
+        answer = 'Please type your question first.';
       });
       return;
     }
 
-    const apiKey = String.fromEnvironment(
-      'GEMINI_API_KEY',
-      defaultValue: '',
-    );
-
-    if (apiKey.isEmpty) {
-      setState(() {
-        answer =
-            "Gemini API key is not configured.\n\n"
-            "Add GEMINI_API_KEY to the GitHub Actions build.";
-      });
-      return;
-    }
+    FocusScope.of(context).unfocus();
 
     setState(() {
       loading = true;
-      answer = "";
+      answer = '';
     });
 
-    try {
-      final model = GenerativeModel(
-        model: 'gemini-1.5-flash',
-        apiKey: apiKey,
-      );
+    final result = await GeminiService.askQuestion(
+      subject: widget.subject,
+      chapter: widget.chapter,
+      question: question,
+    );
 
-      final prompt = '''
-You are StudyBuddy, an educational AI tutor.
+    if (!mounted) return;
 
-Student level: CBSE Class 12
-Subject: ${widget.subject}
-Chapter: ${widget.chapter}
-
-Answer the student's question clearly and accurately.
-
-Rules:
-- Follow CBSE/NCERT level where possible.
-- Explain step by step.
-- Do not unnecessarily use advanced university-level concepts.
-- For numerical questions, show the formula and calculation.
-- For chemistry, explain reactions clearly.
-- For physics, include units.
-- For mathematics, show the working.
-- If the student's assumption is wrong, politely correct it.
-
-Student question:
-$question
-''';
-
-      final response = await model.generateContent([
-        Content.text(prompt),
-      ]);
-
-      setState(() {
-        answer = response.text?.trim() ??
-            "I couldn't generate an answer. Please try again.";
-      });
-    } catch (e) {
-      setState(() {
-        answer =
-            "Unable to contact StudyBuddy AI.\n\n"
-            "Please check your internet connection and Gemini API configuration.";
-      });
-    } finally {
-      setState(() {
-        loading = false;
-      });
-    }
+    setState(() {
+      loading = false;
+      answer = result;
+    });
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    questionController.dispose();
     super.dispose();
   }
 
@@ -110,47 +63,71 @@ $question
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+
       appBar: AppBar(
         backgroundColor: const Color(0xFFB71C1C),
-        title: const Text("Ask StudyBuddy AI"),
+        foregroundColor: Colors.white,
+        title: const Text('Ask AI Doubt'),
       ),
+
       body: ListView(
         padding: const EdgeInsets.all(18),
         children: [
+
           Text(
             widget.chapter,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 24,
+              fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
           ),
 
           const SizedBox(height: 8),
 
-          const Text(
-            "Ask your doubt and get a step-by-step explanation.",
-            style: TextStyle(
-              color: Colors.white60,
+          Text(
+            widget.subject,
+            style: const TextStyle(
+              color: Colors.white54,
               fontSize: 15,
             ),
           ),
 
-          const SizedBox(height: 22),
+          const SizedBox(height: 20),
+
+          Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              color: const Color(0xFF19191D),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Text(
+              'Ask StudyBuddy anything about this chapter.',
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 16,
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 18),
 
           TextField(
-            controller: controller,
+            controller: questionController,
             minLines: 5,
             maxLines: 10,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(
+              color: Colors.white,
+            ),
             decoration: InputDecoration(
               hintText:
-                  "Example:\nWhy is benzaldehyde less reactive than propenal?",
+                  'Example:\nWhy is benzaldehyde less reactive than propenal?',
               hintStyle: const TextStyle(
                 color: Colors.white38,
               ),
               filled: true,
               fillColor: const Color(0xFF19191D),
+
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
                 borderSide: BorderSide.none,
@@ -164,19 +141,24 @@ $question
             height: 55,
             child: ElevatedButton.icon(
               onPressed: loading ? null : askAI,
+
               icon: loading
                   ? const SizedBox(
                       width: 20,
                       height: 20,
                       child: CircularProgressIndicator(
-                        strokeWidth: 2,
                         color: Colors.white,
+                        strokeWidth: 2,
                       ),
                     )
-                  : const Icon(Icons.send_rounded),
+                  : const Icon(Icons.smart_toy_rounded),
+
               label: Text(
-                loading ? "Thinking..." : "Ask StudyBuddy",
+                loading
+                    ? 'StudyBuddy is thinking...'
+                    : 'Ask StudyBuddy',
               ),
+
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.redAccent,
                 foregroundColor: Colors.white,
@@ -193,10 +175,10 @@ $question
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color(0xFF18181B),
+                color: const Color(0xFF19191D),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: Colors.redAccent.withOpacity(0.5),
+                  color: Colors.redAccent.withOpacity(0.6),
                 ),
               ),
               child: Text(
