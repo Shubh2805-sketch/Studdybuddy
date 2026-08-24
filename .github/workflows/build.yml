@@ -11,41 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.32.8'
+          flutter-version: "3.24.5"
           channel: stable
-          cache: true
-
-      - name: Flutter doctor
-        run: flutter doctor -v
 
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Generate launcher icons
+      - name: Generate app icon
         run: dart run flutter_launcher_icons
 
-      - name: Analyze project
-        run: flutter analyze
-        continue-on-error: true
-
-      - name: Build release APK
-        run: >
-          flutter build apk
-          --release
-          --dart-define=GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+      - name: Build APK
+        run: flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
