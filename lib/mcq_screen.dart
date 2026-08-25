@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'data/mcq_data.dart';
+import 'user_stats.dart';
 
 class McqScreen extends StatefulWidget {
   final String subject;
@@ -15,219 +17,104 @@ class McqScreen extends StatefulWidget {
 }
 
 class _McqScreenState extends State<McqScreen> {
-  int currentQuestion = 0;
-  int score = 0;
-  bool answered = false;
-  int? selectedAnswer;
+  late List<McqItem> questions;
 
-  late List<McqQuestion> questions;
+  int currentIndex = 0;
+  int score = 0;
+  int? selectedIndex;
+  bool answered = false;
 
   @override
   void initState() {
     super.initState();
-    questions = _getQuestions(widget.subject, widget.chapter);
+
+    questions =
+        studyBuddyMcqs[widget.subject]?[widget.chapter] ??
+            <McqItem>[];
   }
 
-  List<McqQuestion> _getQuestions(String subject, String chapter) {
-    if (subject == "Physics") {
-      return [
-        McqQuestion(
-          question: "The SI unit of electric potential is:",
-          options: [
-            "Volt",
-            "Coulomb",
-            "Newton",
-            "Farad",
-          ],
-          answer: 0,
-          explanation: "Electric potential is measured in volts (V).",
-        ),
-        McqQuestion(
-          question: "Capacitance is defined as:",
-          options: [
-            "Q/V",
-            "V/Q",
-            "IR",
-            "F/q",
-          ],
-          answer: 0,
-          explanation: "Capacitance C = Q/V.",
-        ),
-        McqQuestion(
-          question: "The energy stored in a capacitor is:",
-          options: [
-            "1/2 CV²",
-            "CV",
-            "Q/V",
-            "IR",
-          ],
-          answer: 0,
-          explanation: "Energy stored U = 1/2 CV².",
-        ),
-        McqQuestion(
-          question: "Electric potential is a:",
-          options: [
-            "Scalar quantity",
-            "Vector quantity",
-            "Tensor quantity",
-            "Dimensionless quantity",
-          ],
-          answer: 0,
-          explanation: "Electric potential has magnitude but no direction.",
-        ),
-        McqQuestion(
-          question: "The electric field inside a conductor in electrostatic equilibrium is:",
-          options: [
-            "Zero",
-            "Maximum",
-            "Infinite",
-            "Variable",
-          ],
-          answer: 0,
-          explanation:
-              "The electric field inside a conductor is zero in electrostatic equilibrium.",
-        ),
-      ];
-    }
-
-    if (subject == "Chemistry") {
-      return [
-        McqQuestion(
-          question: "The functional group of an aldehyde is:",
-          options: [
-            "-CHO",
-            "-COOH",
-            "-OH",
-            "-NH₂",
-          ],
-          answer: 0,
-          explanation: "Aldehydes contain the -CHO functional group.",
-        ),
-        McqQuestion(
-          question: "Benzaldehyde has the formula:",
-          options: [
-            "C₆H₅CHO",
-            "C₆H₅OH",
-            "C₆H₆",
-            "CH₃CHO",
-          ],
-          answer: 0,
-          explanation: "Benzaldehyde is C₆H₅CHO.",
-        ),
-        McqQuestion(
-          question: "Oxidation of an aldehyde generally produces:",
-          options: [
-            "Carboxylic acid",
-            "Ether",
-            "Amine",
-            "Alkane",
-          ],
-          answer: 0,
-          explanation:
-              "Aldehydes are generally oxidised to the corresponding carboxylic acids.",
-        ),
-      ];
-    }
-
-    return [
-      McqQuestion(
-        question: "The derivative of x² is:",
-        options: [
-          "2x",
-          "x",
-          "x²",
-          "2",
-        ],
-        answer: 0,
-        explanation: "Using the power rule, d(x²)/dx = 2x.",
-      ),
-      McqQuestion(
-        question: "The integral of 1 dx is:",
-        options: [
-          "x + C",
-          "1 + C",
-          "0",
-          "x² + C",
-        ],
-        answer: 0,
-        explanation: "∫1 dx = x + C.",
-      ),
-      McqQuestion(
-        question: "sin²x + cos²x equals:",
-        options: [
-          "1",
-          "0",
-          "2",
-          "x",
-        ],
-        answer: 0,
-        explanation: "This is the fundamental trigonometric identity.",
-      ),
-    ];
-  }
-
-  void _selectAnswer(int index) {
+  void selectAnswer(int index) {
     if (answered) return;
 
-    setState(() {
-      answered = true;
-      selectedAnswer = index;
+    final question = questions[currentIndex];
+    final correct = index == question.correctIndex;
 
-      if (index == questions[currentQuestion].answer) {
+    setState(() {
+      selectedIndex = index;
+      answered = true;
+
+      if (correct) {
         score++;
       }
     });
+
+    UserStats.recordMcqAnswer(correct);
   }
 
-  void _nextQuestion() {
-    if (currentQuestion < questions.length - 1) {
-      setState(() {
-        currentQuestion++;
-        answered = false;
-        selectedAnswer = null;
-      });
-    } else {
-      _showResult();
+  void nextQuestion() {
+    if (currentIndex >= questions.length - 1) {
+      showResult();
+      return;
     }
+
+    setState(() {
+      currentIndex++;
+      selectedIndex = null;
+      answered = false;
+    });
   }
 
-  void _showResult() {
+  void showResult() {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) {
+      builder: (context) {
+        final percentage = questions.isEmpty
+            ? 0
+            : ((score / questions.length) * 100)
+                .round();
+
         return AlertDialog(
-          backgroundColor: const Color(0xFF1B1B1F),
+          backgroundColor: const Color(0xFF151C2C),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(22),
+          ),
           title: const Text(
-            "Quiz Complete 🎉",
-            style: TextStyle(color: Colors.white),
+            'Quiz Complete 🎉',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           content: Text(
-            "You scored $score/${questions.length}",
+            'Score: $score/${questions.length}\n'
+            'Accuracy: $percentage%',
             style: const TextStyle(
               color: Colors.white70,
               fontSize: 18,
+              height: 1.5,
             ),
           ),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
+
                 setState(() {
-                  currentQuestion = 0;
+                  currentIndex = 0;
                   score = 0;
+                  selectedIndex = null;
                   answered = false;
-                  selectedAnswer = null;
                 });
               },
-              child: const Text("Retry"),
+              child: const Text('Retry'),
             ),
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
-              child: const Text("Done"),
+              child: const Text('Done'),
             ),
           ],
         );
@@ -235,58 +122,127 @@ class _McqScreenState extends State<McqScreen> {
     );
   }
 
+  Color optionColor(
+    int index,
+    McqItem question,
+  ) {
+    if (!answered) {
+      return const Color(0xFF151C2C);
+    }
+
+    if (index == question.correctIndex) {
+      return const Color(0xFF14532D);
+    }
+
+    if (index == selectedIndex) {
+      return const Color(0xFF7F1D1D);
+    }
+
+    return const Color(0xFF151C2C);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final question = questions[currentQuestion];
+    if (questions.isEmpty) {
+      return Scaffold(
+        backgroundColor: const Color(0xFF080B14),
+        appBar: AppBar(
+          backgroundColor: const Color(0xFF0D1220),
+          foregroundColor: Colors.white,
+          title: const Text('MCQs'),
+        ),
+        body: const Center(
+          child: Text(
+            'No MCQs available for this chapter.',
+            style: TextStyle(
+              color: Colors.white70,
+              fontSize: 17,
+            ),
+          ),
+        ),
+      );
+    }
+
+    final question = questions[currentIndex];
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color(0xFF080B14),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFB71C1C),
-        title: const Text("NCERT MCQs"),
+        backgroundColor: const Color(0xFF0D1220),
+        foregroundColor: Colors.white,
+        title: const Text(
+          'Chapter MCQs',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: ListView(
-        padding: const EdgeInsets.all(18),
+        padding: const EdgeInsets.fromLTRB(
+          18,
+          20,
+          18,
+          35,
+        ),
         children: [
           Text(
             widget.chapter,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 25,
+              fontSize: 28,
               fontWeight: FontWeight.bold,
             ),
           ),
 
-          const SizedBox(height: 8),
+          const SizedBox(height: 7),
 
           Text(
-            "Question ${currentQuestion + 1} of ${questions.length}",
+            '${widget.subject} • '
+            'Question ${currentIndex + 1} of '
+            '${questions.length}',
             style: const TextStyle(
               color: Colors.white54,
+              fontSize: 15,
             ),
           ),
 
           const SizedBox(height: 20),
 
-          LinearProgressIndicator(
-            value: (currentQuestion + 1) / questions.length,
-            backgroundColor: Colors.white12,
-            color: Colors.redAccent,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: LinearProgressIndicator(
+              value:
+                  (currentIndex + 1) / questions.length,
+              minHeight: 7,
+              backgroundColor: Colors.white12,
+              color: const Color(0xFF8B5CF6),
+            ),
           ),
 
-          const SizedBox(height: 25),
+          const SizedBox(height: 24),
 
           Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: const Color(0xFF19191D),
-              borderRadius: BorderRadius.circular(22),
+              gradient: const LinearGradient(
+                colors: [
+                  Color(0xFF171D31),
+                  Color(0xFF101521),
+                ],
+              ),
+              borderRadius:
+                  BorderRadius.circular(22),
+              border: Border.all(
+                color: const Color(0xFF8B5CF6)
+                    .withOpacity(0.35),
+              ),
             ),
             child: Text(
               question.question,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: 18,
+                height: 1.5,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -296,116 +252,137 @@ class _McqScreenState extends State<McqScreen> {
 
           ...List.generate(
             question.options.length,
-            (index) => _optionButton(
-              index,
-              question.options[index],
-              question.answer,
-            ),
+            (index) {
+              return Container(
+                margin:
+                    const EdgeInsets.only(bottom: 12),
+                child: Material(
+                  color: optionColor(
+                    index,
+                    question,
+                  ),
+                  borderRadius:
+                      BorderRadius.circular(17),
+                  child: InkWell(
+                    borderRadius:
+                        BorderRadius.circular(17),
+                    onTap: () {
+                      selectAnswer(index);
+                    },
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.all(17),
+                      child: Row(
+                        crossAxisAlignment:
+                            CrossAxisAlignment.start,
+                        children: [
+                          CircleAvatar(
+                            radius: 18,
+                            backgroundColor:
+                                Colors.white12,
+                            child: Text(
+                              String.fromCharCode(
+                                65 + index,
+                              ),
+                              style:
+                                  const TextStyle(
+                                color: Colors.white,
+                                fontWeight:
+                                    FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 14),
+                          Expanded(
+                            child: Text(
+                              question
+                                  .options[index],
+                              style:
+                                  const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                height: 1.4,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
 
           if (answered) ...[
-            const SizedBox(height: 15),
+            const SizedBox(height: 4),
+
             Container(
-              padding: const EdgeInsets.all(18),
+              padding: const EdgeInsets.all(17),
               decoration: BoxDecoration(
-                color: const Color(0xFF18181B),
-                borderRadius: BorderRadius.circular(18),
+                color: const Color(0xFF0F172A),
+                borderRadius:
+                    BorderRadius.circular(17),
+                border: Border.all(
+                  color: const Color(0xFF263149),
+                ),
               ),
-              child: Text(
-                question.explanation,
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 16,
+              child: Column(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Explanation',
+                    style: TextStyle(
+                      color: Color(0xFFA78BFA),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    question.explanation,
+                    style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: 15,
+                      height: 1.5,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 18),
+
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: nextQuestion,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      const Color(0xFF8B5CF6),
+                  foregroundColor: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(
+                    vertical: 15,
+                  ),
+                  shape:
+                      RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(15),
+                  ),
+                ),
+                child: Text(
+                  currentIndex ==
+                          questions.length - 1
+                      ? 'See Result'
+                      : 'Next Question',
                 ),
               ),
             ),
           ],
-
-          if (answered)
-            Padding(
-              padding: const EdgeInsets.only(top: 18),
-              child: ElevatedButton(
-                onPressed: _nextQuestion,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.redAccent,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.all(16),
-                ),
-                child: Text(
-                  currentQuestion == questions.length - 1
-                      ? "See Result"
-                      : "Next Question",
-                ),
-              ),
-            ),
         ],
       ),
     );
   }
-
-  Widget _optionButton(
-    int index,
-    String text,
-    int correctAnswer,
-  ) {
-    Color color = const Color(0xFF1B1B1F);
-
-    if (answered) {
-      if (index == correctAnswer) {
-        color = Colors.green.shade800;
-      } else if (index == selectedAnswer) {
-        color = Colors.red.shade800;
-      }
-    }
-
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      child: Material(
-        color: color,
-        borderRadius: BorderRadius.circular(16),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(16),
-          onTap: () => _selectAnswer(index),
-          child: Padding(
-            padding: const EdgeInsets.all(18),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.white12,
-                  child: Text(
-                    String.fromCharCode(65 + index),
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Text(
-                    text,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class McqQuestion {
-  final String question;
-  final List<String> options;
-  final int answer;
-  final String explanation;
-
-  McqQuestion({
-    required this.question,
-    required this.options,
-    required this.answer,
-    required this.explanation,
-  });
 }
