@@ -26,108 +26,81 @@ class StudyBuddyApp extends StatelessWidget {
         scaffoldBackgroundColor:
             const Color(0xFF080B14),
 
-        colorScheme:
-            ColorScheme.fromSeed(
-          seedColor:
-              const Color(0xFF8B5CF6),
-          brightness:
-              Brightness.dark,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF8B5CF6),
+          brightness: Brightness.dark,
         ),
 
-        appBarTheme:
-            const AppBarTheme(
-          backgroundColor:
-              Color(0xFF0D1220),
-          foregroundColor:
-              Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF0D1220),
+          foregroundColor: Colors.white,
           elevation: 0,
           centerTitle: false,
         ),
 
-        cardTheme:
-            const CardThemeData(
-          color:
-              Color(0xFF121827),
+        // FIXED:
+        // CardThemeData -> CardTheme
+        cardTheme: const CardTheme(
+          color: Color(0xFF121827),
           elevation: 4,
           margin: EdgeInsets.zero,
         ),
 
-        inputDecorationTheme:
-            InputDecorationTheme(
+        inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor:
-              const Color(0xFF151C2C),
-          border:
-              OutlineInputBorder(
-            borderRadius:
-                BorderRadius.circular(
-              18,
-            ),
-            borderSide:
-                BorderSide.none,
+          fillColor: const Color(0xFF151C2C),
+
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(18),
+            borderSide: BorderSide.none,
           ),
-          enabledBorder:
-              OutlineInputBorder(
-            borderRadius:
-                BorderRadius.circular(
-              18,
-            ),
-            borderSide:
-                const BorderSide(
-              color:
-                  Color(0xFF263149),
+
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(18),
+            borderSide: const BorderSide(
+              color: Color(0xFF263149),
             ),
           ),
-          focusedBorder:
-              OutlineInputBorder(
-            borderRadius:
-                BorderRadius.circular(
-              18,
-            ),
-            borderSide:
-                const BorderSide(
-              color:
-                  Color(0xFF8B5CF6),
+
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(18),
+            borderSide: const BorderSide(
+              color: Color(0xFF8B5CF6),
               width: 1.5,
             ),
           ),
         ),
 
-        snackBarTheme:
-            const SnackBarThemeData(
-          backgroundColor:
-              Color(0xFF151C2C),
-          contentTextStyle:
-              TextStyle(
+        snackBarTheme: const SnackBarThemeData(
+          backgroundColor: Color(0xFF151C2C),
+          contentTextStyle: TextStyle(
             color: Colors.white,
             fontSize: 16,
           ),
         ),
 
-        textTheme:
-            const TextTheme(
+        textTheme: const TextTheme(
           bodyLarge: TextStyle(
             color: Colors.white,
           ),
+
           bodyMedium: TextStyle(
             color: Colors.white70,
           ),
+
           titleLarge: TextStyle(
             color: Colors.white,
-            fontWeight:
-                FontWeight.bold,
+            fontWeight: FontWeight.bold,
           ),
-          headlineSmall:
-              TextStyle(
+
+          headlineSmall: TextStyle(
             color: Colors.white,
-            fontWeight:
-                FontWeight.bold,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
 
-      home:
-          const HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
