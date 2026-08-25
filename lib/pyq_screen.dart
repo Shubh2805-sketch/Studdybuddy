@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:studdybuddy/data/pyq_data.dart';
+import 'data/pyq_data.dart';
+import 'user_stats.dart';
 
 class PyqScreen extends StatelessWidget {
   final String subject;
@@ -13,148 +14,66 @@ class PyqScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<PyqItem> questions =
+    final questions =
         studyBuddyPyqs[subject]?[chapter] ?? const <PyqItem>[];
 
     return Scaffold(
-      backgroundColor: const Color(0xFF090A0F),
-
+      backgroundColor: const Color(0xFF080B14),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF151722),
+        backgroundColor: const Color(0xFF0D1220),
         foregroundColor: Colors.white,
-        elevation: 0,
         title: const Text(
-          "Previous Year Questions",
+          'Previous Year Questions',
           style: TextStyle(
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
-
       body: questions.isEmpty
-          ? Center(
-              child: Padding(
-                padding: const EdgeInsets.all(30),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.quiz_outlined,
-                      color: Color(0xFF858B9D),
-                      size: 65,
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    const Text(
-                      "No questions available",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 23,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    const SizedBox(height: 10),
-
-                    Text(
-                      "$chapter\n$subject",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Color(0xFF8E94A6),
-                        fontSize: 15,
-                      ),
-                    ),
-                  ],
+          ? const Center(
+              child: Text(
+                'No PYQs available for this chapter.',
+                style: TextStyle(
+                  color: Colors.white70,
+                  fontSize: 17,
                 ),
               ),
             )
           : ListView(
               padding: const EdgeInsets.fromLTRB(
+                18,
                 20,
-                24,
-                20,
-                35,
+                18,
+                30,
               ),
               children: [
                 Text(
                   chapter,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.w800,
-                    height: 1.15,
+                    fontSize: 29,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
 
-                const SizedBox(height: 8),
+                const SizedBox(height: 7),
 
                 Text(
-                  subject,
+                  '$subject • $questions.length questions',
                   style: const TextStyle(
-                    color: Color(0xFF9DA3B4),
-                    fontSize: 17,
-                    fontWeight: FontWeight.w500,
+                    color: Colors.white54,
+                    fontSize: 15,
                   ),
                 ),
 
-                const SizedBox(height: 22),
-
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 18,
-                    vertical: 18,
-                  ),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF171923),
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: const Color(0xFF2B2F3D),
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          color: const Color(
-                            0xFFFF4D78,
-                          ).withOpacity(0.14),
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: const Icon(
-                          Icons.quiz_outlined,
-                          color: Color(0xFFFF4D78),
-                          size: 27,
-                        ),
-                      ),
-
-                      const SizedBox(width: 14),
-
-                      Text(
-                        "${questions.length} questions",
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 19,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 22),
+                const SizedBox(height: 20),
 
                 ...List.generate(
                   questions.length,
-                  (index) {
-                    return _QuestionCard(
-                      number: index + 1,
-                      item: questions[index],
-                    );
-                  },
+                  (index) => _QuestionCard(
+                    number: index + 1,
+                    item: questions[index],
+                  ),
                 ),
               ],
             ),
@@ -182,69 +101,32 @@ class _QuestionCardState extends State<_QuestionCard> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
-
-      padding: const EdgeInsets.all(20),
-
+      padding: const EdgeInsets.all(19),
       decoration: BoxDecoration(
-        color: const Color(0xFF171923),
-        borderRadius: BorderRadius.circular(22),
-
-        border: Border.all(
-          color: const Color(0xFF2B2F3D),
+        gradient: const LinearGradient(
+          colors: [
+            Color(0xFF151C2C),
+            Color(0xFF101521),
+          ],
         ),
-
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.18),
-            blurRadius: 18,
-            offset: const Offset(0, 8),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(21),
+        border: Border.all(
+          color: const Color(0xFF8B5CF6).withOpacity(0.3),
+        ),
       ),
-
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 11,
-                  vertical: 7,
-                ),
-
-                decoration: BoxDecoration(
-                  color: const Color(
-                    0xFFFF4D78,
-                  ).withOpacity(0.12),
-
-                  borderRadius: BorderRadius.circular(10),
-                ),
-
-                child: Text(
-                  "Q${widget.number}",
-                  style: const TextStyle(
-                    color: Color(0xFFFF6F91),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-              ),
-
-              const SizedBox(width: 10),
-
-              const Text(
-                "Exam Practice",
-                style: TextStyle(
-                  color: Color(0xFF8E94A6),
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
+          Text(
+            'PYQ ${widget.number}',
+            style: const TextStyle(
+              color: Color(0xFFA78BFA),
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
 
           Text(
             widget.item.question,
@@ -256,66 +138,53 @@ class _QuestionCardState extends State<_QuestionCard> {
             ),
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 15),
 
           SizedBox(
             width: double.infinity,
-
             child: OutlinedButton.icon(
               onPressed: () {
                 setState(() {
                   showAnswer = !showAnswer;
                 });
-              },
 
+                if (!showAnswer) {
+                  UserStats.recordRevision();
+                }
+              },
               icon: Icon(
                 showAnswer
                     ? Icons.visibility_off_outlined
                     : Icons.visibility_outlined,
-                size: 19,
               ),
-
               label: Text(
-                showAnswer
-                    ? "Hide Answer"
-                    : "Show Answer",
+                showAnswer ? 'Hide Answer' : 'Show Answer',
               ),
-
               style: OutlinedButton.styleFrom(
-                foregroundColor: const Color(0xFFFF6F91),
-
+                foregroundColor: const Color(0xFF22D3EE),
                 side: const BorderSide(
-                  color: Color(0xFF4B3140),
+                  color: Color(0xFF334155),
                 ),
-
                 padding: const EdgeInsets.symmetric(
                   vertical: 13,
-                ),
-
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
                 ),
               ),
             ),
           ),
 
           if (showAnswer) ...[
-            const SizedBox(height: 16),
-
+            const SizedBox(height: 15),
             Container(
               width: double.infinity,
-
               padding: const EdgeInsets.all(16),
-
               decoration: BoxDecoration(
-                color: const Color(0xFF101117),
-                borderRadius: BorderRadius.circular(16),
+                color: const Color(0xFF0B1020),
+                borderRadius: BorderRadius.circular(15),
               ),
-
               child: Text(
                 widget.item.answer,
                 style: const TextStyle(
-                  color: Color(0xFFD6D9E2),
+                  color: Colors.white70,
                   fontSize: 16,
                   height: 1.55,
                 ),
