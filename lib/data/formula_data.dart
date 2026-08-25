@@ -1,197 +1,221 @@
 const Map<String, Map<String, List<String>>> studyBuddyFormulas = {
-
   "Physics": {
-
-    "Electric Charges and Fields":[
+    "Electric Charges and Fields": [
       "F = kq₁q₂/r²",
       "E = F/q",
       "E = kQ/r²",
-      "Gauss Law: Φ = q/ε₀"
+      "Φ = q/ε₀",
     ],
 
-    "Electrostatic Potential and Capacitance":[
+    "Electrostatic Potential and Capacitance": [
       "V = W/q",
       "V = kQ/r",
       "C = Q/V",
-      "Parallel: C = C₁ + C₂",
-      "Series: 1/C = 1/C₁ + 1/C₂"
+      "C = ε₀A/d",
+      "U = ½CV²",
+      "U = ½QV",
+      "U = Q²/2C",
+      "Parallel: C = C₁ + C₂ + C₃ + ...",
+      "Series: 1/C = 1/C₁ + 1/C₂ + 1/C₃ + ...",
     ],
 
-    "Current Electricity":[
+    "Current Electricity": [
       "V = IR",
       "R = ρL/A",
       "P = VI",
       "P = I²R",
-      "P = V²/R"
+      "P = V²/R",
     ],
 
-    "Moving Charges and Magnetism":[
-      "F = q(v×B)",
+    "Moving Charges and Magnetism": [
+      "F = q(v × B)",
       "F = BIL",
-      "B = μ₀I/2πr"
+      "B = μ₀I/2πr",
     ],
 
-    "Magnetism and Matter":[
-      "τ = MB sinθ"
+    "Magnetism and Matter": [
+      "τ = MB sinθ",
     ],
 
-    "Electromagnetic Induction":[
+    "Electromagnetic Induction": [
       "ε = -dΦ/dt",
-      "Φ = BA cosθ"
+      "Φ = BA cosθ",
     ],
 
-    "Alternating Current":[
+    "Alternating Current": [
       "Vrms = V₀/√2",
-      "Irms = I₀/√2"
+      "Irms = I₀/√2",
     ],
 
-    "Electromagnetic Waves":[
-      "c = λν"
+    "Electromagnetic Waves": [
+      "c = λν",
+      "c = 1/√(μ₀ε₀)",
+      "E₀/B₀ = c",
     ],
 
-    "Ray Optics and Optical Instruments":[
+    "Ray Optics and Optical Instruments": [
       "1/f = 1/v - 1/u",
-      "m = v/u"
+      "m = v/u",
     ],
 
-    "Wave Optics":[
-      "β = λD/d"
+    "Wave Optics": [
+      "β = λD/d",
     ],
 
-    "Dual Nature of Radiation and Matter":[
+    "Dual Nature of Radiation and Matter": [
       "E = hν",
-      "λ = h/p"
+      "λ = h/p",
+      "Kmax = hν - φ",
     ],
 
-    "Atoms":[
-      "Eₙ = -13.6/n² eV"
+    "Atoms": [
+      "Eₙ = -13.6/n² eV",
     ],
 
-    "Nuclei":[
+    "Nuclei": [
       "N = N₀e⁻λt",
-      "T½ = 0.693/λ"
+      "T½ = 0.693/λ",
     ],
 
-    "Semiconductor Electronics":[
-      "Logic Gates: AND, OR, NOT"
-    ]
+    "Semiconductor Electronics": [
+      "I = I₀(e^(eV/kT) - 1)",
+      "Logic Gates: AND, OR, NOT",
+    ],
   },
 
   "Chemistry": {
-
-    "Solutions":[
-      "M = moles/L",
-      "Molality = moles/kg",
-      "π = CRT"
+    "Solutions": [
+      "Molarity = moles of solute / volume of solution",
+      "M = n/V",
+      "Molality = moles of solute / mass of solvent in kg",
+      "π = CRT",
     ],
 
-    "Electrochemistry":[
+    "Electrochemistry": [
       "Ecell = Ecathode - Eanode",
-      "Nernst Equation"
+      "ΔG = -nFE",
+      "E = E° - (0.0591/n) log Q",
     ],
 
-    "Chemical Kinetics":[
-      "Rate = k[A]^n",
-      "k = Ae^(-Ea/RT)"
+    "Chemical Kinetics": [
+      "Rate = k[A]ⁿ",
+      "k = Ae^(-Ea/RT)",
     ],
 
-    "d and f Block Elements":[
-      "Variable oxidation states"
+    "d and f Block Elements": [
+      "Common oxidation states vary across transition elements",
+      "Magnetic moment: μ = √[n(n + 2)] BM",
     ],
 
-    "Coordination Compounds":[
-      "Coordination Number"
+    "Coordination Compounds": [
+      "Coordination number = number of donor atoms directly bonded to metal",
+      "Oxidation state of metal can be calculated from ligand charges",
     ],
 
-    "Haloalkanes and Haloarenes":[
+    "Haloalkanes and Haloarenes": [
       "SN1",
-      "SN2"
+      "SN2",
     ],
 
-    "Alcohols, Phenols and Ethers":[
-      "Williamson Synthesis"
+    "Alcohols, Phenols and Ethers": [
+      "Williamson Ether Synthesis",
+      "R-OH + Na → R-ONa + ½H₂",
     ],
 
-    "Aldehydes, Ketones and Carboxylic Acids":[
-      "Cannizzaro",
-      "Aldol"
+    "Aldehydes, Ketones and Carboxylic Acids": [
+      "Aldol Condensation",
+      "Cannizzaro Reaction",
     ],
 
-    "Amines":[
-      "Basicity order"
+    "Amines": [
+      "Basicity order depends on structure and medium",
+      "RNH₂ + HNO₂ → ROH + N₂ + H₂O",
     ],
 
-    "Biomolecules":[
-      "Protein peptide bond"
+    "Biomolecules": [
+      "Peptide bond: -CO-NH-",
+      "Glucose molecular formula: C₆H₁₂O₆",
     ],
 
-    "Polymers":[
-      "Addition polymer",
-      "Condensation polymer"
+    "Polymers": [
+      "Addition polymerisation",
+      "Condensation polymerisation",
     ],
 
-    "Chemistry in Everyday Life":[
-      "Drug classifications"
-    ]
+    "Chemistry in Everyday Life": [
+      "Antacids",
+      "Antihistamines",
+      "Analgesics",
+      "Antiseptics",
+    ],
   },
 
   "Maths": {
-
-    "Relations and Functions":[
-      "f(g(x))"
+    "Relations and Functions": [
+      "f(g(x))",
+      "g(f(x))",
     ],
 
-    "Inverse Trigonometric Functions":[
+    "Inverse Trigonometric Functions": [
       "sin⁻¹x + cos⁻¹x = π/2",
-      "tan⁻¹x + cot⁻¹x = π/2"
+      "tan⁻¹x + cot⁻¹x = π/2",
     ],
 
-    "Matrices":[
-      "A×B",
-      "A⁻¹ = adjA/|A|"
+    "Matrices": [
+      "A⁻¹ = adj(A)/|A|",
+      "AA⁻¹ = A⁻¹A = I",
     ],
 
-    "Determinants":[
-      "|AB| = |A||B|"
+    "Determinants": [
+      "|AB| = |A||B|",
     ],
 
-    "Continuity and Differentiability":[
-      "d(xⁿ)/dx = nxⁿ⁻¹"
+    "Continuity and Differentiability": [
+      "d(xⁿ)/dx = nxⁿ⁻¹",
+      "d(sin x)/dx = cos x",
+      "d(cos x)/dx = -sin x",
     ],
 
-    "Application of Derivatives":[
-      "dy/dx = 0 at extrema"
+    "Application of Derivatives": [
+      "dy/dx = 0 at stationary points",
+      "For local maximum: f′(x) changes + to -",
+      "For local minimum: f′(x) changes - to +",
     ],
 
-    "Integrals":[
-      "∫xⁿdx = xⁿ⁺¹/(n+1)",
-      "∫1/x dx = ln|x|"
+    "Integrals": [
+      "∫xⁿ dx = xⁿ⁺¹/(n+1) + C",
+      "∫1/x dx = ln|x| + C",
+      "∫sin x dx = -cos x + C",
+      "∫cos x dx = sin x + C",
     ],
 
-    "Application of Integrals":[
-      "Area = ∫ydx"
+    "Application of Integrals": [
+      "Area = ∫ y dx",
+      "Area between curves = ∫(upper curve - lower curve) dx",
     ],
 
-    "Differential Equations":[
-      "dy/dx = ky"
+    "Differential Equations": [
+      "dy/dx = ky",
     ],
 
-    "Vector Algebra":[
+    "Vector Algebra": [
       "a·b = |a||b|cosθ",
-      "|a×b| = |a||b|sinθ"
+      "|a × b| = |a||b|sinθ",
     ],
 
-    "Three Dimensional Geometry":[
-      "Distance formula"
+    "Three Dimensional Geometry": [
+      "Distance between two points = √[(x₂-x₁)² + (y₂-y₁)² + (z₂-z₁)²]",
     ],
 
-    "Linear Programming":[
-      "Corner point method"
+    "Linear Programming": [
+      "Corner point method",
+      "Optimal value occurs at a feasible corner point",
     ],
 
-    "Probability":[
-      "P(A|B)=P(A∩B)/P(B)",
-      "Bayes Theorem"
-    ]
-  }
+    "Probability": [
+      "P(A|B) = P(A∩B)/P(B)",
+      "P(A∩B) = P(A|B)P(B)",
+      "Bayes Theorem",
+    ],
+  },
 };
