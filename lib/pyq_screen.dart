@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'data/pyq_data.dart';
-import 'user_stats.dart';
 
 class PyqScreen extends StatelessWidget {
   final String subject;
@@ -14,14 +13,15 @@ class PyqScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final questions =
-        studyBuddyPyqs[subject]?[chapter] ?? const <PyqItem>[];
+    final List<PyqItem> questions =
+        studyBuddyPyqs[subject]?[chapter] ?? <PyqItem>[];
 
     return Scaffold(
       backgroundColor: const Color(0xFF080B14),
       appBar: AppBar(
         backgroundColor: const Color(0xFF0D1220),
         foregroundColor: Colors.white,
+        elevation: 0,
         title: const Text(
           'Previous Year Questions',
           style: TextStyle(
@@ -30,21 +30,13 @@ class PyqScreen extends StatelessWidget {
         ),
       ),
       body: questions.isEmpty
-          ? const Center(
-              child: Text(
-                'No PYQs available for this chapter.',
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 17,
-                ),
-              ),
-            )
+          ? _emptyState()
           : ListView(
               padding: const EdgeInsets.fromLTRB(
                 18,
                 20,
                 18,
-                30,
+                35,
               ),
               children: [
                 Text(
@@ -59,10 +51,59 @@ class PyqScreen extends StatelessWidget {
                 const SizedBox(height: 7),
 
                 Text(
-                  '$subject • $questions.length questions',
+                  subject,
                   style: const TextStyle(
                     color: Colors.white54,
-                    fontSize: 15,
+                    fontSize: 16,
+                  ),
+                ),
+
+                const SizedBox(height: 18),
+
+                Container(
+                  padding: const EdgeInsets.all(18),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color(0xFF171D31),
+                        Color(0xFF101521),
+                      ],
+                    ),
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(
+                      color: const Color(0xFF8B5CF6)
+                          .withOpacity(0.35),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 48,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF8B5CF6)
+                              .withOpacity(0.15),
+                          borderRadius:
+                              BorderRadius.circular(14),
+                        ),
+                        child: const Icon(
+                          Icons.history_edu_rounded,
+                          color: Color(0xFFA78BFA),
+                          size: 27,
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Text(
+                          '${questions.length} questions available',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
 
@@ -72,26 +113,66 @@ class PyqScreen extends StatelessWidget {
                   questions.length,
                   (index) => _QuestionCard(
                     number: index + 1,
-                    item: questions[index],
+                    question: questions[index].question,
+                    answer: questions[index].answer,
                   ),
                 ),
               ],
             ),
     );
   }
+
+  Widget _emptyState() {
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.all(30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.quiz_outlined,
+              color: Colors.white30,
+              size: 70,
+            ),
+            SizedBox(height: 18),
+            Text(
+              'No questions available',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'This chapter does not have PYQs in the database yet.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white54,
+                fontSize: 15,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class _QuestionCard extends StatefulWidget {
   final int number;
-  final PyqItem item;
+  final String question;
+  final String answer;
 
   const _QuestionCard({
     required this.number,
-    required this.item,
+    required this.question,
+    required this.answer,
   });
 
   @override
-  State<_QuestionCard> createState() => _QuestionCardState();
+  State<_QuestionCard> createState() =>
+      _QuestionCardState();
 }
 
 class _QuestionCardState extends State<_QuestionCard> {
@@ -111,25 +192,43 @@ class _QuestionCardState extends State<_QuestionCard> {
         ),
         borderRadius: BorderRadius.circular(21),
         border: Border.all(
-          color: const Color(0xFF8B5CF6).withOpacity(0.3),
+          color: const Color(0xFF8B5CF6)
+              .withOpacity(0.30),
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment:
+            CrossAxisAlignment.start,
         children: [
-          Text(
-            'PYQ ${widget.number}',
-            style: const TextStyle(
-              color: Color(0xFFA78BFA),
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-            ),
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF8B5CF6)
+                      .withOpacity(0.14),
+                  borderRadius:
+                      BorderRadius.circular(9),
+                ),
+                child: Text(
+                  'PYQ ${widget.number}',
+                  style: const TextStyle(
+                    color: Color(0xFFA78BFA),
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
           ),
 
-          const SizedBox(height: 12),
+          const SizedBox(height: 13),
 
           Text(
-            widget.item.question,
+            widget.question,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 17,
@@ -138,7 +237,7 @@ class _QuestionCardState extends State<_QuestionCard> {
             ),
           ),
 
-          const SizedBox(height: 15),
+          const SizedBox(height: 16),
 
           SizedBox(
             width: double.infinity,
@@ -147,10 +246,6 @@ class _QuestionCardState extends State<_QuestionCard> {
                 setState(() {
                   showAnswer = !showAnswer;
                 });
-
-                if (!showAnswer) {
-                  UserStats.recordRevision();
-                }
               },
               icon: Icon(
                 showAnswer
@@ -158,31 +253,44 @@ class _QuestionCardState extends State<_QuestionCard> {
                     : Icons.visibility_outlined,
               ),
               label: Text(
-                showAnswer ? 'Hide Answer' : 'Show Answer',
+                showAnswer
+                    ? 'Hide Answer'
+                    : 'Show Answer',
               ),
               style: OutlinedButton.styleFrom(
-                foregroundColor: const Color(0xFF22D3EE),
+                foregroundColor:
+                    const Color(0xFF22D3EE),
                 side: const BorderSide(
                   color: Color(0xFF334155),
                 ),
-                padding: const EdgeInsets.symmetric(
+                padding:
+                    const EdgeInsets.symmetric(
                   vertical: 13,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(13),
                 ),
               ),
             ),
           ),
 
           if (showAnswer) ...[
-            const SizedBox(height: 15),
+            const SizedBox(height: 14),
+
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: const Color(0xFF0B1020),
-                borderRadius: BorderRadius.circular(15),
+                borderRadius:
+                    BorderRadius.circular(15),
+                border: Border.all(
+                  color: const Color(0xFF263149),
+                ),
               ),
               child: Text(
-                widget.item.answer,
+                widget.answer,
                 style: const TextStyle(
                   color: Colors.white70,
                   fontSize: 16,
