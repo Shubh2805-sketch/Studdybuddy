@@ -9,1200 +9,516 @@ class PyqItem {
 }
 
 const Map<String, Map<String, List<PyqItem>>> studyBuddyPyqs = {
-  // ============================================================
-  // PHYSICS
-  // ============================================================
-
   "Physics": {
     "Electric Charges and Fields": [
-      PyqItem(
-        question: "State Coulomb's law and write its mathematical expression.",
-        answer:
-            "The electrostatic force between two point charges is directly proportional to their product and inversely proportional to the square of their separation. F = kq₁q₂/r².",
-      ),
-      PyqItem(
-        question: "Define electric field intensity at a point.",
-        answer:
-            "Electric field intensity is the force experienced by a unit positive test charge placed at that point. E = F/q.",
-      ),
-      PyqItem(
-        question: "Write the expression for electric field due to a point charge.",
-        answer:
-            "For a point charge Q at distance r, E = kQ/r².",
-      ),
-      PyqItem(
-        question: "What is electric flux?",
-        answer:
-            "Electric flux is the measure of the electric field passing through a surface. For a uniform field, Φ = EA cosθ.",
-      ),
-      PyqItem(
-        question: "State Gauss's law.",
-        answer:
-            "The total electric flux through a closed surface is equal to the enclosed charge divided by ε₀. Φ = q/ε₀.",
-      ),
-      PyqItem(
-        question:
-            "Using Gauss's law, write the electric field due to an infinitely long straight charged wire.",
-        answer:
-            "For a wire with linear charge density λ, E = λ/(2πε₀r).",
-      ),
-      PyqItem(
-        question:
-            "What happens to the force between two charges if the distance is doubled?",
-        answer:
-            "Since force is proportional to 1/r², doubling the distance makes the force one-fourth of its original value.",
-      ),
-      PyqItem(
-        question: "Define electric dipole and electric dipole moment.",
-        answer:
-            "An electric dipole consists of two equal and opposite charges separated by a small distance. Its dipole moment is p = q × 2a and is directed from negative to positive charge.",
-      ),
-      PyqItem(
-        question:
-            "Write the expression for torque on an electric dipole in a uniform electric field.",
-        answer: "The torque is τ = pE sinθ.",
-      ),
-      PyqItem(
-        question: "Why is the electric field inside a conductor zero in electrostatic equilibrium?",
-        answer:
-            "Free charges rearrange themselves until the electric field inside the conductor becomes zero.",
-      ),
+      PyqItem(question: "State Coulomb's law.", answer: "F = kq₁q₂/r²."),
+      PyqItem(question: "Define electric field intensity.", answer: "E = F/q."),
+      PyqItem(question: "Write the electric field due to a point charge.", answer: "E = kQ/r²."),
+      PyqItem(question: "Define electric flux.", answer: "Φ = EA cosθ."),
+      PyqItem(question: "State Gauss's law.", answer: "Φ = q/ε₀."),
+      PyqItem(question: "Write the field due to an infinite line charge.", answer: "E = λ/(2πε₀r)."),
+      PyqItem(question: "Write the field due to an infinite plane sheet.", answer: "E = σ/(2ε₀)."),
+      PyqItem(question: "Define electric dipole moment.", answer: "p = q × 2a, directed from negative to positive charge."),
+      PyqItem(question: "Write torque on an electric dipole.", answer: "τ = pE sinθ."),
+      PyqItem(question: "Why is electric field inside a conductor zero?", answer: "Free charges rearrange until the internal electric field becomes zero."),
     ],
 
     "Electrostatic Potential and Capacitance": [
-      PyqItem(
-        question: "Define electric potential at a point.",
-        answer:
-            "Electric potential is the work done per unit positive test charge in bringing it from infinity to that point. V = W/q.",
-      ),
-      PyqItem(
-        question: "Write the potential due to a point charge.",
-        answer: "The potential at distance r is V = kQ/r.",
-      ),
-      PyqItem(
-        question: "Define capacitance.",
-        answer:
-            "Capacitance is the charge stored per unit potential difference. C = Q/V.",
-      ),
-      PyqItem(
-        question:
-            "Write the expression for capacitance of a parallel plate capacitor.",
-        answer: "For vacuum, C = ε₀A/d.",
-      ),
-      PyqItem(
-        question:
-            "What happens to capacitance when a dielectric is inserted between the plates?",
-        answer:
-            "The capacitance increases by the dielectric constant K. C = Kε₀A/d.",
-      ),
-      PyqItem(
-        question: "Write the expressions for energy stored in a capacitor.",
-        answer: "U = ½CV² = ½QV = Q²/(2C).",
-      ),
-      PyqItem(
-        question:
-            "Write the equivalent capacitance for capacitors connected in parallel.",
-        answer: "C = C₁ + C₂ + C₃ + ...",
-      ),
-      PyqItem(
-        question:
-            "Write the equivalent capacitance for capacitors connected in series.",
-        answer: "1/C = 1/C₁ + 1/C₂ + 1/C₃ + ...",
-      ),
-      PyqItem(
-        question:
-            "What is the work done in moving a charge along an equipotential surface?",
-        answer:
-            "The work done is zero because the potential difference between two points on an equipotential surface is zero.",
-      ),
-      PyqItem(
-        question:
-            "Why are electric field lines perpendicular to an equipotential surface?",
-        answer:
-            "There is no potential change along an equipotential surface, so the electric field must be perpendicular to it.",
-      ),
+      PyqItem(question: "Define electric potential.", answer: "V = W/q."),
+      PyqItem(question: "Write potential due to a point charge.", answer: "V = kQ/r."),
+      PyqItem(question: "Write the relation between electric field and potential.", answer: "E = -dV/dr."),
+      PyqItem(question: "Define capacitance.", answer: "C = Q/V."),
+      PyqItem(question: "Write capacitance of a parallel plate capacitor.", answer: "C = ε₀A/d."),
+      PyqItem(question: "What happens when a dielectric is inserted?", answer: "Capacitance increases by the dielectric constant K."),
+      PyqItem(question: "Write energy stored in a capacitor.", answer: "U = ½CV² = ½QV = Q²/(2C)."),
+      PyqItem(question: "Write equivalent capacitance in parallel.", answer: "C = C₁ + C₂ + C₃ + ..."),
+      PyqItem(question: "Write equivalent capacitance in series.", answer: "1/C = 1/C₁ + 1/C₂ + 1/C₃ + ..."),
+      PyqItem(question: "What is work done along an equipotential surface?", answer: "Zero, because potential difference is zero."),
     ],
 
     "Current Electricity": [
-      PyqItem(
-        question: "State Ohm's law.",
-        answer:
-            "At constant temperature, current through a conductor is directly proportional to the potential difference. V = IR.",
-      ),
-      PyqItem(
-        question: "Define resistivity.",
-        answer:
-            "Resistivity is the resistance of a conductor having unit length and unit cross-sectional area. ρ = RA/L.",
-      ),
-      PyqItem(
-        question: "Write the expression for resistance of a wire.",
-        answer: "R = ρL/A.",
-      ),
-      PyqItem(
-        question: "Write the expressions for electrical power.",
-        answer: "P = VI = I²R = V²/R.",
-      ),
-      PyqItem(
-        question: "How does resistance change when the length of a wire is doubled?",
-        answer:
-            "Resistance doubles because R is directly proportional to length.",
-      ),
-      PyqItem(
-        question:
-            "Write the equivalent resistance of resistors connected in series.",
-        answer: "R = R₁ + R₂ + R₃ + ...",
-      ),
-      PyqItem(
-        question:
-            "Write the equivalent resistance of resistors connected in parallel.",
-        answer: "1/R = 1/R₁ + 1/R₂ + 1/R₃ + ...",
-      ),
-      PyqItem(
-        question: "State Kirchhoff's junction rule.",
-        answer:
-            "The total current entering a junction is equal to the total current leaving it.",
-      ),
-      PyqItem(
-        question: "State Kirchhoff's loop rule.",
-        answer:
-            "The algebraic sum of potential differences around a closed loop is zero.",
-      ),
-      PyqItem(
-        question: "Define drift velocity.",
-        answer:
-            "Drift velocity is the average velocity acquired by free electrons in a conductor due to an applied electric field.",
-      ),
+      PyqItem(question: "State Ohm's law.", answer: "At constant temperature, V = IR."),
+      PyqItem(question: "Define resistivity.", answer: "ρ = RA/L."),
+      PyqItem(question: "Write resistance of a uniform wire.", answer: "R = ρL/A."),
+      PyqItem(question: "Write electrical power.", answer: "P = VI = I²R = V²/R."),
+      PyqItem(question: "Write equivalent resistance in series.", answer: "R = R₁ + R₂ + R₃ + ..."),
+      PyqItem(question: "Write equivalent resistance in parallel.", answer: "1/R = 1/R₁ + 1/R₂ + 1/R₃ + ..."),
+      PyqItem(question: "State Kirchhoff's junction rule.", answer: "Current entering a junction equals current leaving it."),
+      PyqItem(question: "State Kirchhoff's loop rule.", answer: "Algebraic sum of potential changes around a closed loop is zero."),
+      PyqItem(question: "Define drift velocity.", answer: "Average velocity acquired by charge carriers due to an electric field."),
+      PyqItem(question: "Write current in terms of drift velocity.", answer: "I = neAvd."),
     ],
 
     "Moving Charges and Magnetism": [
-      PyqItem(
-        question:
-            "Write the expression for magnetic force on a charged particle.",
-        answer: "F = qvB sinθ.",
-      ),
-      PyqItem(
-        question:
-            "What is the force on a charged particle moving parallel to a magnetic field?",
-        answer: "The force is zero because sin0° = 0.",
-      ),
-      PyqItem(
-        question:
-            "Write the force acting on a current-carrying conductor in a magnetic field.",
-        answer: "F = BIL sinθ.",
-      ),
-      PyqItem(
-        question:
-            "Write the magnetic field due to a long straight current-carrying conductor.",
-        answer: "B = μ₀I/(2πr).",
-      ),
-      PyqItem(
-        question: "State the Biot-Savart law.",
-        answer:
-            "The magnetic field due to a current element is proportional to I dl sinθ and inversely proportional to r².",
-      ),
-      PyqItem(
-        question:
-            "What is the path of a charged particle moving perpendicular to a uniform magnetic field?",
-        answer:
-            "It moves in a circular path because the magnetic force provides the centripetal force.",
-      ),
-      PyqItem(
-        question:
-            "Write the radius of the circular path of a charged particle.",
-        answer: "r = mv/(qB).",
-      ),
-      PyqItem(
-        question: "Write the expression for cyclotron frequency.",
-        answer: "f = qB/(2πm).",
-      ),
-      PyqItem(
-        question:
-            "Write the torque acting on a current-carrying coil in a magnetic field.",
-        answer: "τ = nBIA sinθ.",
-      ),
-      PyqItem(
-        question: "State the principle of a cyclotron.",
-        answer:
-            "A charged particle is accelerated by an alternating electric field while a magnetic field makes it move in semicircular paths.",
-      ),
+      PyqItem(question: "Write magnetic force on a moving charge.", answer: "F = qvB sinθ."),
+      PyqItem(question: "When is magnetic force on a charge zero?", answer: "When the charge is stationary or moves parallel to the magnetic field."),
+      PyqItem(question: "Write force on a current-carrying conductor.", answer: "F = BIL sinθ."),
+      PyqItem(question: "Write magnetic field due to a long straight conductor.", answer: "B = μ₀I/(2πr)."),
+      PyqItem(question: "State Biot-Savart law.", answer: "dB = (μ₀/4π)(I dl sinθ/r²)."),
+      PyqItem(question: "Write radius of circular motion of a charged particle.", answer: "r = mv/(qB)."),
+      PyqItem(question: "Write cyclotron frequency.", answer: "f = qB/(2πm)."),
+      PyqItem(question: "Write torque on a current loop.", answer: "τ = nBIA sinθ."),
+      PyqItem(question: "What is the path of a charge moving perpendicular to B?", answer: "A circular path."),
+      PyqItem(question: "State the principle of a cyclotron.", answer: "Magnetic field produces circular motion and an alternating electric field accelerates the particle."),
+    ],
+
+    "Magnetism and Matter": [
+      PyqItem(question: "Define magnetic dipole moment of a current loop.", answer: "M = IA for a single-turn loop."),
+      PyqItem(question: "Write torque on a magnetic dipole.", answer: "τ = MB sinθ."),
+      PyqItem(question: "Write potential energy of a magnetic dipole.", answer: "U = -MB cosθ."),
+      PyqItem(question: "Define magnetic susceptibility.", answer: "χm = M/H."),
+      PyqItem(question: "Write relation between B, H and M.", answer: "B = μ₀(H + M)."),
+      PyqItem(question: "What are diamagnetic substances?", answer: "They are weakly repelled by a magnetic field and have negative susceptibility."),
+      PyqItem(question: "What are paramagnetic substances?", answer: "They are weakly attracted and have small positive susceptibility."),
+      PyqItem(question: "What are ferromagnetic substances?", answer: "They are strongly attracted and can retain magnetisation."),
+      PyqItem(question: "What is Curie temperature?", answer: "Temperature above which a ferromagnetic substance becomes paramagnetic."),
+      PyqItem(question: "What is magnetic declination?", answer: "Angle between the geographic and magnetic meridians at a place."),
     ],
 
     "Electromagnetic Induction": [
-      PyqItem(
-        question: "State Faraday's law of electromagnetic induction.",
-        answer:
-            "The induced emf is equal to the negative rate of change of magnetic flux. ε = -dΦ/dt.",
-      ),
-      PyqItem(
-        question: "State Lenz's law.",
-        answer:
-            "The direction of induced current opposes the change in magnetic flux producing it.",
-      ),
-      PyqItem(
-        question: "Define magnetic flux.",
-        answer: "Magnetic flux is Φ = BA cosθ.",
-      ),
-      PyqItem(
-        question: "Write the expression for motional emf.",
-        answer: "For perpendicular motion, ε = Blv.",
-      ),
-      PyqItem(
-        question: "What is self-inductance?",
-        answer:
-            "Self-inductance is the property of a coil by which it opposes changes in current. ε = -L(dI/dt).",
-      ),
-      PyqItem(
-        question: "Write the energy stored in an inductor.",
-        answer: "U = ½LI².",
-      ),
-      PyqItem(
-        question: "Why is Lenz's law consistent with conservation of energy?",
-        answer:
-            "The induced current opposes the change producing it, so external work is required to change the magnetic flux.",
-      ),
-      PyqItem(
-        question: "What is mutual induction?",
-        answer:
-            "Mutual induction is the phenomenon in which changing current in one coil induces emf in another nearby coil.",
-      ),
-      PyqItem(
-        question: "What is the SI unit of magnetic flux?",
-        answer: "The SI unit is weber (Wb).",
-      ),
-      PyqItem(
-        question: "On what factors does induced emf depend?",
-        answer:
-            "It depends on the rate of change of magnetic flux and the number of turns of the coil.",
-      ),
+      PyqItem(question: "State Faraday's law.", answer: "Induced emf equals the negative rate of change of magnetic flux."),
+      PyqItem(question: "Write Faraday's law mathematically.", answer: "ε = -dΦ/dt."),
+      PyqItem(question: "State Lenz's law.", answer: "Induced current opposes the change in magnetic flux producing it."),
+      PyqItem(question: "Define magnetic flux.", answer: "Φ = BA cosθ."),
+      PyqItem(question: "Write motional emf.", answer: "ε = Blv."),
+      PyqItem(question: "Define self-inductance.", answer: "Property of a coil by which it opposes changes in current."),
+      PyqItem(question: "Write emf due to self-inductance.", answer: "ε = -L(dI/dt)."),
+      PyqItem(question: "Write energy stored in an inductor.", answer: "U = ½LI²."),
+      PyqItem(question: "Define mutual induction.", answer: "Changing current in one coil induces emf in another nearby coil."),
+      PyqItem(question: "Why does Lenz's law agree with conservation of energy?", answer: "The induced current opposes the change, so external work is required."),
+    ],
+
+    "Alternating Current": [
+      PyqItem(question: "Define alternating current.", answer: "Current whose magnitude and direction vary periodically."),
+      PyqItem(question: "Write instantaneous AC voltage.", answer: "v = V₀ sinωt."),
+      PyqItem(question: "Write rms voltage.", answer: "Vrms = V₀/√2."),
+      PyqItem(question: "Write rms current.", answer: "Irms = I₀/√2."),
+      PyqItem(question: "What is inductive reactance?", answer: "XL = ωL."),
+      PyqItem(question: "What is capacitive reactance?", answer: "XC = 1/(ωC)."),
+      PyqItem(question: "Write impedance of a series LCR circuit.", answer: "Z = √[R² + (XL - XC)²]."),
+      PyqItem(question: "What is resonance in an LCR circuit?", answer: "Resonance occurs when XL = XC."),
+      PyqItem(question: "Write resonant angular frequency.", answer: "ω₀ = 1/√LC."),
+      PyqItem(question: "What is power factor?", answer: "cosφ = R/Z."),
+    ],
+
+    "Electromagnetic Waves": [
+      PyqItem(question: "What are electromagnetic waves?", answer: "Transverse waves consisting of oscillating electric and magnetic fields."),
+      PyqItem(question: "Do electromagnetic waves require a material medium?", answer: "No."),
+      PyqItem(question: "Write speed of electromagnetic waves in vacuum.", answer: "c = 1/√(μ₀ε₀)."),
+      PyqItem(question: "Write relation between wavelength and frequency.", answer: "c = λν."),
+      PyqItem(question: "Are E and B perpendicular?", answer: "Yes. E, B and propagation direction are mutually perpendicular."),
+      PyqItem(question: "What is the nature of electromagnetic waves?", answer: "They are transverse."),
+      PyqItem(question: "Which electromagnetic waves have highest frequency?", answer: "Gamma rays."),
+      PyqItem(question: "Which electromagnetic waves have longest wavelength?", answer: "Radio waves."),
+      PyqItem(question: "Give one use of microwaves.", answer: "Radar and satellite communication."),
+      PyqItem(question: "Give one use of infrared radiation.", answer: "Thermal imaging and remote controls."),
+    ],
+
+    "Ray Optics and Optical Instruments": [
+      PyqItem(question: "State the mirror formula.", answer: "1/f = 1/v + 1/u."),
+      PyqItem(question: "Write magnification for a spherical mirror.", answer: "m = -v/u."),
+      PyqItem(question: "State Snell's law.", answer: "n₁ sin i = n₂ sin r."),
+      PyqItem(question: "Define refractive index.", answer: "n = c/v."),
+      PyqItem(question: "Write the lens formula.", answer: "1/f = 1/v - 1/u."),
+      PyqItem(question: "Write magnification for a thin lens.", answer: "m = v/u."),
+      PyqItem(question: "Write lens maker's formula.", answer: "1/f = (μ - 1)(1/R₁ - 1/R₂)."),
+      PyqItem(question: "What is total internal reflection?", answer: "Complete reflection from a denser to rarer medium when incidence exceeds the critical angle."),
+      PyqItem(question: "What is power of a lens?", answer: "P = 1/f, where f is in metres."),
+      PyqItem(question: "What is the principle of optical fibre?", answer: "Total internal reflection."),
+    ],
+
+    "Wave Optics": [
+      PyqItem(question: "What is a wavefront?", answer: "A surface joining points of a wave that are in the same phase."),
+      PyqItem(question: "State Huygens' principle.", answer: "Every point on a wavefront acts as a source of secondary wavelets."),
+      PyqItem(question: "What is interference?", answer: "Redistribution of intensity due to superposition of coherent waves."),
+      PyqItem(question: "Condition for constructive interference?", answer: "Path difference = nλ."),
+      PyqItem(question: "Condition for destructive interference?", answer: "Path difference = (2n+1)λ/2."),
+      PyqItem(question: "Write fringe width in YDSE.", answer: "β = λD/d."),
+      PyqItem(question: "What are coherent sources?", answer: "Sources having constant phase difference and same frequency."),
+      PyqItem(question: "What is diffraction?", answer: "Bending and spreading of waves around obstacles or apertures."),
+      PyqItem(question: "What is polarisation?", answer: "Restriction of transverse vibrations to a particular direction."),
+      PyqItem(question: "What does polarisation prove?", answer: "It proves that light is transverse."),
+    ],
+
+    "Dual Nature of Radiation and Matter": [
+      PyqItem(question: "Write Planck's relation.", answer: "E = hν."),
+      PyqItem(question: "Write Einstein's photoelectric equation.", answer: "hν = φ + Kmax."),
+      PyqItem(question: "What is work function?", answer: "Minimum energy required to eject an electron from a metal surface."),
+      PyqItem(question: "What is threshold frequency?", answer: "Minimum frequency required for photoelectric emission."),
+      PyqItem(question: "Write de Broglie wavelength.", answer: "λ = h/p."),
+      PyqItem(question: "What happens to maximum kinetic energy when frequency increases?", answer: "It increases."),
+      PyqItem(question: "What happens to photoelectric current when intensity increases?", answer: "It generally increases above threshold frequency."),
+      PyqItem(question: "Does intensity change threshold frequency?", answer: "No."),
+      PyqItem(question: "What is stopping potential?", answer: "Retarding potential required to stop the most energetic photoelectrons."),
+      PyqItem(question: "What is photon momentum?", answer: "p = h/λ."),
+    ],
+
+    "Atoms": [
+      PyqItem(question: "State Rutherford's main conclusion.", answer: "Atom has a tiny dense positively charged nucleus containing most of its mass."),
+      PyqItem(question: "Give one limitation of Rutherford's model.", answer: "It could not explain atomic stability and line spectra."),
+      PyqItem(question: "State Bohr's quantisation condition.", answer: "mvr = nh/(2π)."),
+      PyqItem(question: "How does Bohr radius depend on n?", answer: "For hydrogen-like atoms, rn ∝ n²/Z."),
+      PyqItem(question: "Write energy of nth orbit of hydrogen.", answer: "En = -13.6/n² eV."),
+      PyqItem(question: "What causes a spectral line?", answer: "Transition of an electron between quantised energy levels."),
+      PyqItem(question: "What is ground state?", answer: "The lowest energy state of an atom."),
+      PyqItem(question: "What is excitation energy?", answer: "Energy required to raise an atom to a higher energy state."),
+      PyqItem(question: "Ionisation energy of hydrogen in ground state?", answer: "13.6 eV."),
+      PyqItem(question: "Which hydrogen series is mainly visible?", answer: "Balmer series."),
+    ],
+
+    "Nuclei": [
+      PyqItem(question: "Define mass defect.", answer: "Difference between constituent nucleon masses and actual nuclear mass."),
+      PyqItem(question: "Write mass-energy relation.", answer: "E = mc²."),
+      PyqItem(question: "Define binding energy.", answer: "Energy required to completely separate a nucleus into its nucleons."),
+      PyqItem(question: "Write radioactive decay law.", answer: "N = N₀e^(-λt)."),
+      PyqItem(question: "Write half-life relation.", answer: "T½ = 0.693/λ."),
+      PyqItem(question: "Write mean life.", answer: "τ = 1/λ."),
+      PyqItem(question: "What is alpha decay?", answer: "Emission of a helium nucleus, ⁴₂He."),
+      PyqItem(question: "What is beta-minus decay?", answer: "A neutron changes into a proton with emission of an electron and antineutrino."),
+      PyqItem(question: "What is nuclear fission?", answer: "Splitting of a heavy nucleus into lighter nuclei with energy release."),
+      PyqItem(question: "What is nuclear fusion?", answer: "Combining light nuclei to form a heavier nucleus with energy release."),
+    ],
+
+    "Semiconductor Electronics": [
+      PyqItem(question: "What is an intrinsic semiconductor?", answer: "A pure semiconductor without intentional doping."),
+      PyqItem(question: "What is an extrinsic semiconductor?", answer: "A semiconductor doped with a suitable impurity."),
+      PyqItem(question: "What is an n-type semiconductor?", answer: "A semiconductor doped with donor impurity where electrons are majority carriers."),
+      PyqItem(question: "What is a p-type semiconductor?", answer: "A semiconductor doped with acceptor impurity where holes are majority carriers."),
+      PyqItem(question: "What is a p-n junction?", answer: "The boundary formed by joining p-type and n-type semiconductor regions."),
+      PyqItem(question: "What is depletion region?", answer: "Region near a p-n junction depleted of mobile charge carriers."),
+      PyqItem(question: "What is forward bias?", answer: "p-side connected to positive and n-side to negative terminal."),
+      PyqItem(question: "What is reverse bias?", answer: "p-side connected to negative and n-side to positive terminal."),
+      PyqItem(question: "What is a diode used for?", answer: "It allows current mainly in one direction and can be used for rectification."),
+      PyqItem(question: "Name the basic logic gates.", answer: "AND, OR and NOT."),
     ],
   },
-
-  // ============================================================
-  // CHEMISTRY
-  // ============================================================
 
   "Chemistry": {
     "Solutions": [
-      PyqItem(
-        question: "Define molarity.",
-        answer:
-            "Molarity is the number of moles of solute present in one litre of solution. M = n/V.",
-      ),
-      PyqItem(
-        question: "Define molality.",
-        answer:
-            "Molality is the number of moles of solute present in one kilogram of solvent.",
-      ),
-      PyqItem(
-        question: "State Raoult's law.",
-        answer:
-            "For an ideal solution, the partial vapour pressure of a component equals its mole fraction multiplied by its vapour pressure in the pure state.",
-      ),
-      PyqItem(
-        question: "Write the expression for osmotic pressure.",
-        answer: "π = CRT.",
-      ),
-      PyqItem(
-        question: "What are colligative properties?",
-        answer:
-            "They are properties that depend on the number of solute particles rather than their nature.",
-      ),
-      PyqItem(
-        question: "Write the expression for elevation in boiling point.",
-        answer: "ΔTb = Kb m.",
-      ),
-      PyqItem(
-        question: "Write the expression for depression in freezing point.",
-        answer: "ΔTf = Kf m.",
-      ),
-      PyqItem(
-        question: "What is an ideal solution?",
-        answer:
-            "An ideal solution obeys Raoult's law over the entire range of concentration and has ΔHmix = 0 and ΔVmix = 0.",
-      ),
-      PyqItem(
-        question: "What is van't Hoff factor?",
-        answer:
-            "The van't Hoff factor accounts for association or dissociation of solute particles and is represented by i.",
-      ),
-      PyqItem(
-        question: "Why is molality independent of temperature?",
-        answer:
-            "Molality is based on the mass of solvent, which does not change with temperature.",
-      ),
+      PyqItem(question: "Define molarity.", answer: "Moles of solute per litre of solution."),
+      PyqItem(question: "Define molality.", answer: "Moles of solute per kilogram of solvent."),
+      PyqItem(question: "State Raoult's law.", answer: "Partial vapour pressure equals mole fraction times vapour pressure of the pure component."),
+      PyqItem(question: "What are colligative properties?", answer: "Properties depending on the number of solute particles."),
+      PyqItem(question: "Write osmotic pressure relation.", answer: "π = iCRT."),
+      PyqItem(question: "Write elevation in boiling point.", answer: "ΔTb = iKb m."),
+      PyqItem(question: "Write depression in freezing point.", answer: "ΔTf = iKf m."),
+      PyqItem(question: "Define ideal solution.", answer: "A solution obeying Raoult's law throughout the composition range."),
+      PyqItem(question: "What is van't Hoff factor?", answer: "Factor accounting for association or dissociation of solute particles."),
+      PyqItem(question: "Why is molality temperature independent?", answer: "It is based on mass of solvent rather than volume."),
     ],
 
     "Electrochemistry": [
-      PyqItem(
-        question: "Define standard electrode potential.",
-        answer:
-            "It is the electrode potential measured under standard conditions relative to the standard hydrogen electrode.",
-      ),
-      PyqItem(
-        question: "Write the relation between Gibbs energy and cell potential.",
-        answer: "ΔG = -nFE.",
-      ),
-      PyqItem(
-        question: "Write the Nernst equation at 298 K.",
-        answer: "E = E° - (0.0591/n) log Q.",
-      ),
-      PyqItem(
-        question: "Define conductance.",
-        answer: "Conductance is the reciprocal of resistance. G = 1/R.",
-      ),
-      PyqItem(
-        question: "Define molar conductivity.",
-        answer:
-            "Molar conductivity is the conductance of the volume of solution containing one mole of electrolyte.",
-      ),
-      PyqItem(
-        question: "State Faraday's first law of electrolysis.",
-        answer:
-            "The mass of substance deposited is directly proportional to the quantity of electricity passed through the electrolyte.",
-      ),
-      PyqItem(
-        question: "What is a galvanic cell?",
-        answer:
-            "A galvanic cell converts chemical energy of a spontaneous redox reaction into electrical energy.",
-      ),
-      PyqItem(
-        question: "What is the function of a salt bridge?",
-        answer:
-            "It completes the electrical circuit, maintains electrical neutrality and reduces liquid junction potential.",
-      ),
-      PyqItem(
-        question:
-            "What happens to molar conductivity on dilution of a strong electrolyte?",
-        answer:
-            "Molar conductivity increases on dilution and approaches a limiting value at infinite dilution.",
-      ),
-      PyqItem(
-        question: "What is the SI unit of conductivity?",
-        answer: "The SI unit is siemens per metre (S m⁻¹).",
-      ),
+      PyqItem(question: "Define standard electrode potential.", answer: "Electrode potential measured under standard conditions relative to SHE."),
+      PyqItem(question: "Write Gibbs energy and cell potential relation.", answer: "ΔG = -nFE."),
+      PyqItem(question: "Write Nernst equation at 298 K.", answer: "E = E° - (0.0591/n)log Q."),
+      PyqItem(question: "Define conductance.", answer: "G = 1/R."),
+      PyqItem(question: "Define conductivity.", answer: "Conductance of a solution of unit length and unit cross-sectional area."),
+      PyqItem(question: "Define molar conductivity.", answer: "Conductivity multiplied by the volume containing one mole of electrolyte."),
+      PyqItem(question: "State Faraday's first law.", answer: "Mass deposited is proportional to quantity of electricity passed."),
+      PyqItem(question: "What is a galvanic cell?", answer: "A cell converting spontaneous chemical energy into electrical energy."),
+      PyqItem(question: "Function of a salt bridge?", answer: "Completes the circuit and maintains electrical neutrality."),
+      PyqItem(question: "What happens to molar conductivity on dilution?", answer: "It increases and approaches a limiting value."),
     ],
 
     "Chemical Kinetics": [
-      PyqItem(
-        question: "Define rate of reaction.",
-        answer:
-            "Rate of reaction is the change in concentration of reactants or products per unit time.",
-      ),
-      PyqItem(
-        question: "What is the order of a reaction?",
-        answer:
-            "It is the sum of powers of concentration terms in the experimentally determined rate law.",
-      ),
-      PyqItem(
-        question: "What is molecularity?",
-        answer:
-            "Molecularity is the number of reacting species involved in an elementary reaction.",
-      ),
-      PyqItem(
-        question: "Write the Arrhenius equation.",
-        answer: "k = Ae^(-Ea/RT).",
-      ),
-      PyqItem(
-        question: "Write the half-life expression for a first-order reaction.",
-        answer: "t½ = 0.693/k.",
-      ),
-      PyqItem(
-        question:
-            "What is the unit of rate constant for a first-order reaction?",
-        answer: "The unit is s⁻¹.",
-      ),
-      PyqItem(
-        question: "How does a catalyst affect activation energy?",
-        answer:
-            "A catalyst provides an alternative reaction pathway with lower activation energy.",
-      ),
-      PyqItem(
-        question: "What is activation energy?",
-        answer:
-            "Activation energy is the minimum energy required for reactant molecules to undergo the reaction.",
-      ),
-      PyqItem(
-        question: "What is a first-order reaction?",
-        answer:
-            "It is a reaction whose rate is proportional to the first power of the concentration of a reactant.",
-      ),
-      PyqItem(
-        question: "How does temperature affect reaction rate?",
-        answer:
-            "Increasing temperature generally increases reaction rate because more molecules acquire energy equal to or greater than activation energy.",
-      ),
+      PyqItem(question: "Define rate of reaction.", answer: "Change in concentration of reactant or product per unit time."),
+      PyqItem(question: "Define order of reaction.", answer: "Sum of powers of concentration terms in the experimentally determined rate law."),
+      PyqItem(question: "Define molecularity.", answer: "Number of reacting species involved in an elementary step."),
+      PyqItem(question: "Write Arrhenius equation.", answer: "k = Ae^(-Ea/RT)."),
+      PyqItem(question: "Write half-life for first-order reaction.", answer: "t½ = 0.693/k."),
+      PyqItem(question: "Unit of first-order rate constant?", answer: "s⁻¹."),
+      PyqItem(question: "What is activation energy?", answer: "Minimum energy needed for effective reaction."),
+      PyqItem(question: "How does a catalyst affect activation energy?", answer: "It provides an alternative pathway with lower activation energy."),
+      PyqItem(question: "What is a first-order reaction?", answer: "A reaction whose rate is proportional to first power of one reactant concentration."),
+      PyqItem(question: "How does temperature affect reaction rate?", answer: "Increasing temperature generally increases the rate constant."),
+    ],
+
+    "d and f Block Elements": [
+      PyqItem(question: "Why do transition elements show variable oxidation states?", answer: "Both ns and (n−1)d electrons can participate in bonding."),
+      PyqItem(question: "Why are many transition-metal ions coloured?", answer: "Due to electronic transitions between split d-orbitals."),
+      PyqItem(question: "What is lanthanide contraction?", answer: "Gradual decrease in atomic or ionic size across the lanthanide series."),
+      PyqItem(question: "Why are transition metals good catalysts?", answer: "They show variable oxidation states and form intermediate complexes."),
+      PyqItem(question: "What is a transition element?", answer: "An element whose atom or common ion has an incomplete d-subshell."),
+      PyqItem(question: "Why do transition metals form complexes?", answer: "Small size, high charge density and available orbitals favour coordination."),
+      PyqItem(question: "Common oxidation state of lanthanides?", answer: "+3."),
+      PyqItem(question: "Why is KMnO₄ a strong oxidising agent?", answer: "Mn(VII) is readily reduced to lower oxidation states."),
+      PyqItem(question: "Colour of dichromate ion?", answer: "Orange."),
+      PyqItem(question: "Colour of permanganate ion?", answer: "Purple."),
+    ],
+
+    "Coordination Compounds": [
+      PyqItem(question: "Define coordination compound.", answer: "Compound containing a central metal atom or ion bonded to ligands."),
+      PyqItem(question: "Define ligand.", answer: "Ion or molecule donating a lone pair to a central metal ion."),
+      PyqItem(question: "What is coordination number?", answer: "Number of donor atoms directly bonded to the central metal ion."),
+      PyqItem(question: "What is a monodentate ligand?", answer: "A ligand coordinating through one donor atom."),
+      PyqItem(question: "Give an example of a bidentate ligand.", answer: "Ethylenediamine, en."),
+      PyqItem(question: "What is a coordination entity?", answer: "Central metal and coordinated ligands within square brackets."),
+      PyqItem(question: "What is crystal field splitting?", answer: "Splitting of metal d-orbital energies in a ligand field."),
+      PyqItem(question: "What is a chelate?", answer: "A ring-containing complex formed by a multidentate ligand."),
+      PyqItem(question: "What is an ambidentate ligand?", answer: "A ligand capable of coordinating through either of two donor atoms."),
+      PyqItem(question: "What is linkage isomerism?", answer: "Isomerism caused by coordination through different donor atoms of an ambidentate ligand."),
+    ],
+
+    "Haloalkanes and Haloarenes": [
+      PyqItem(question: "What is an SN1 reaction?", answer: "A nucleophilic substitution proceeding through a carbocation intermediate."),
+      PyqItem(question: "What is an SN2 reaction?", answer: "A one-step bimolecular nucleophilic substitution."),
+      PyqItem(question: "Why are tertiary haloalkanes favourable for SN1?", answer: "They form relatively stable tertiary carbocations."),
+      PyqItem(question: "Why do primary haloalkanes favour SN2?", answer: "Steric hindrance is low, making backside attack easier."),
+      PyqItem(question: "What is Wurtz reaction?", answer: "Coupling of alkyl halides with sodium in dry ether to form higher alkanes."),
+      PyqItem(question: "What is Finkelstein reaction?", answer: "Halide exchange using sodium iodide in acetone."),
+      PyqItem(question: "What is Swarts reaction?", answer: "Preparation of alkyl fluorides from alkyl chlorides or bromides using metal fluorides."),
+      PyqItem(question: "Why are haloarenes less reactive in nucleophilic substitution?", answer: "Resonance gives the C-X bond partial double-bond character."),
+      PyqItem(question: "What is dehydrohalogenation?", answer: "Removal of HX from a haloalkane to form an alkene."),
+      PyqItem(question: "What is generally the major alkene in Zaitsev elimination?", answer: "The more substituted alkene."),
+    ],
+
+    "Alcohols, Phenols and Ethers": [
+      PyqItem(question: "Why can alcohols form hydrogen bonds?", answer: "The O-H bond is polar and oxygen has lone pairs."),
+      PyqItem(question: "What is dehydration of alcohol?", answer: "Removal of water from an alcohol, commonly forming an alkene."),
+      PyqItem(question: "Why is phenol more acidic than ethanol?", answer: "Phenoxide ion is resonance stabilised."),
+      PyqItem(question: "What is Williamson ether synthesis?", answer: "An alkoxide reacts with a primary alkyl halide to form an ether."),
+      PyqItem(question: "What is oxidation of a primary alcohol?", answer: "It can give an aldehyde and, under stronger oxidation, a carboxylic acid."),
+      PyqItem(question: "What is oxidation of a secondary alcohol?", answer: "It gives a ketone."),
+      PyqItem(question: "How do tertiary alcohols behave under mild oxidation?", answer: "They resist oxidation because the carbon bearing OH lacks hydrogen."),
+      PyqItem(question: "What is Kolbe's reaction of phenol?", answer: "Sodium phenoxide with CO₂ gives salicylic acid after acidification."),
+      PyqItem(question: "What is Reimer-Tiemann reaction?", answer: "Phenol with CHCl₃ and base gives mainly salicylaldehyde."),
+      PyqItem(question: "Why are ethers relatively less reactive?", answer: "The C-O-C linkage is comparatively stable and lacks an O-H bond."),
     ],
 
     "Aldehydes, Ketones and Carboxylic Acids": [
-      PyqItem(
-        question:
-            "Why are aldehydes generally more reactive than ketones towards nucleophilic addition?",
-        answer:
-            "Aldehydes have less steric hindrance and fewer electron-releasing alkyl groups, so their carbonyl carbon is more electrophilic.",
-      ),
-      PyqItem(
-        question: "Why is benzaldehyde less reactive than propenal?",
-        answer:
-            "Conjugation with the benzene ring allows delocalisation of electron density and reduces the electrophilic character of the carbonyl carbon.",
-      ),
-      PyqItem(
-        question: "What is aldol condensation?",
-        answer:
-            "Aldehydes or ketones containing alpha hydrogen undergo condensation in the presence of a base to form beta-hydroxy carbonyl compounds.",
-      ),
-      PyqItem(
-        question: "What is Cannizzaro reaction?",
-        answer:
-            "Aldehydes without alpha hydrogen undergo self oxidation-reduction in concentrated alkali to give an alcohol and a carboxylate salt.",
-      ),
-      PyqItem(
-        question: "How are aldehydes oxidised?",
-        answer:
-            "Aldehydes are readily oxidised to the corresponding carboxylic acids.",
-      ),
-      PyqItem(
-        question: "How are aldehydes and ketones reduced?",
-        answer:
-            "Aldehydes are reduced to primary alcohols and ketones to secondary alcohols.",
-      ),
-      PyqItem(
-        question: "What is the role of Tollens' reagent?",
-        answer:
-            "Tollens' reagent gives a silver mirror test with aldehydes because Ag⁺ is reduced to metallic silver.",
-      ),
-      PyqItem(
-        question: "Why are carboxylic acids acidic?",
-        answer:
-            "The carboxylate ion formed after loss of H⁺ is resonance stabilised.",
-      ),
-      PyqItem(
-        question: "What is esterification?",
-        answer:
-            "A carboxylic acid reacts with an alcohol in the presence of concentrated H₂SO₄ to form an ester and water.",
-      ),
-      PyqItem(
-        question: "What is decarboxylation?",
-        answer:
-            "Decarboxylation is the removal of CO₂ from a carboxylic acid or its salt under suitable conditions.",
-      ),
+      PyqItem(question: "Why are aldehydes more reactive than ketones?", answer: "They have less steric hindrance and fewer electron-releasing groups."),
+      PyqItem(question: "Why is benzaldehyde less reactive than propenal?", answer: "Conjugation with benzene reduces the electrophilic character of the carbonyl carbon."),
+      PyqItem(question: "What is aldol condensation?", answer: "Carbonyl compounds with α-hydrogen form β-hydroxy carbonyl compounds and may dehydrate."),
+      PyqItem(question: "What is Cannizzaro reaction?", answer: "Aldehydes without α-hydrogen undergo disproportionation in concentrated alkali."),
+      PyqItem(question: "How are aldehydes oxidised?", answer: "They are readily oxidised to carboxylic acids."),
+      PyqItem(question: "How are aldehydes and ketones reduced?", answer: "Aldehydes give primary alcohols and ketones give secondary alcohols."),
+      PyqItem(question: "What is Tollens' test?", answer: "Aldehydes reduce Tollens' reagent to silver, producing a silver mirror."),
+      PyqItem(question: "Why are carboxylic acids acidic?", answer: "Their conjugate bases are resonance stabilised."),
+      PyqItem(question: "What is esterification?", answer: "Carboxylic acid reacts with alcohol in acid medium to form ester and water."),
+      PyqItem(question: "What is decarboxylation?", answer: "Removal of CO₂ from a carboxylic acid derivative under suitable conditions."),
     ],
 
     "Amines": [
-      PyqItem(
-        question: "Why are amines basic?",
-        answer:
-            "Amines are basic because nitrogen has a lone pair of electrons that can accept a proton.",
-      ),
-      PyqItem(
-        question: "What is the carbylamine reaction?",
-        answer:
-            "Primary amines react with chloroform and alcoholic KOH to form isocyanides.",
-      ),
-      PyqItem(
-        question: "What is the Hinsberg test?",
-        answer:
-            "The Hinsberg test distinguishes primary, secondary and tertiary amines using benzenesulphonyl chloride.",
-      ),
-      PyqItem(
-        question: "What is diazotisation?",
-        answer:
-            "Primary aromatic amines react with nitrous acid at low temperature to form diazonium salts.",
-      ),
-      PyqItem(
-        question: "What is the Sandmeyer reaction?",
-        answer:
-            "Aryl diazonium salts react with cuprous salts to replace the diazonium group by Cl, Br or CN.",
-      ),
-      PyqItem(
-        question: "Why is aniline less basic than ethylamine?",
-        answer:
-            "In aniline, the nitrogen lone pair is delocalised into the benzene ring and is therefore less available for protonation.",
-      ),
-      PyqItem(
-        question: "What is a primary amine?",
-        answer:
-            "A primary amine has one carbon-containing group attached to nitrogen and has the general formula RNH₂.",
-      ),
-      PyqItem(
-        question: "What is a secondary amine?",
-        answer:
-            "A secondary amine has two carbon-containing groups attached to nitrogen and has the general formula R₂NH.",
-      ),
-      PyqItem(
-        question: "What is a tertiary amine?",
-        answer:
-            "A tertiary amine has three carbon-containing groups attached to nitrogen and has the general formula R₃N.",
-      ),
-      PyqItem(
-        question: "What is the diazonium group?",
-        answer:
-            "The diazonium group is represented as -N₂⁺ and is present in aromatic diazonium salts.",
-      ),
+      PyqItem(question: "Why are amines basic?", answer: "Nitrogen has a lone pair that can accept a proton."),
+      PyqItem(question: "What is carbylamine reaction?", answer: "Primary amines with CHCl₃ and alcoholic KOH form isocyanides."),
+      PyqItem(question: "What is Hinsberg test?", answer: "A test used to distinguish primary, secondary and tertiary amines."),
+      PyqItem(question: "What is diazotisation?", answer: "Conversion of a primary aromatic amine into a diazonium salt using nitrous acid."),
+      PyqItem(question: "What is Sandmeyer reaction?", answer: "Diazonium salts react with cuprous salts to replace the diazonium group."),
+      PyqItem(question: "Why is aniline less basic than ethylamine?", answer: "The nitrogen lone pair is delocalised into the benzene ring."),
+      PyqItem(question: "What is a primary amine?", answer: "An amine with one carbon-containing group attached to nitrogen, RNH₂."),
+      PyqItem(question: "What is a secondary amine?", answer: "An amine with two carbon-containing groups attached to nitrogen, R₂NH."),
+      PyqItem(question: "What is a tertiary amine?", answer: "An amine with three carbon-containing groups attached to nitrogen, R₃N."),
+      PyqItem(question: "What is the diazonium group?", answer: "The functional group -N₂⁺."),
+    ],
+
+    "Biomolecules": [
+      PyqItem(question: "What are carbohydrates?", answer: "Polyhydroxy aldehydes or ketones, or compounds yielding them on hydrolysis."),
+      PyqItem(question: "What is glucose?", answer: "A monosaccharide with molecular formula C₆H₁₂O₆."),
+      PyqItem(question: "What is sucrose?", answer: "A disaccharide composed of glucose and fructose."),
+      PyqItem(question: "What is a peptide bond?", answer: "The -CO-NH- linkage between amino acids."),
+      PyqItem(question: "What are proteins?", answer: "Polymers of amino acids linked mainly by peptide bonds."),
+      PyqItem(question: "What is denaturation?", answer: "Loss of native protein structure and biological activity."),
+      PyqItem(question: "What are enzymes?", answer: "Biological catalysts, mostly proteins."),
+      PyqItem(question: "What is DNA?", answer: "A nucleic acid that stores genetic information."),
+      PyqItem(question: "What is RNA?", answer: "A nucleic acid involved in gene expression and protein synthesis."),
+      PyqItem(question: "What are vitamins?", answer: "Organic micronutrients required in small amounts for normal physiological functions."),
+    ],
+
+    "Polymers": [
+      PyqItem(question: "What is a polymer?", answer: "A high molecular mass substance formed from repeating monomer units."),
+      PyqItem(question: "What is a monomer?", answer: "A small molecule capable of joining to form a polymer."),
+      PyqItem(question: "What is addition polymerisation?", answer: "Polymerisation without elimination of small molecules."),
+      PyqItem(question: "What is condensation polymerisation?", answer: "Polymerisation involving elimination of small molecules."),
+      PyqItem(question: "Give an example of an addition polymer.", answer: "Polyethene."),
+      PyqItem(question: "Give an example of a condensation polymer.", answer: "Nylon-6,6."),
+      PyqItem(question: "What is a copolymer?", answer: "A polymer formed from two or more different monomer types."),
+      PyqItem(question: "What is a thermoplastic?", answer: "A polymer that softens on heating and can be reshaped."),
+      PyqItem(question: "What is a thermosetting polymer?", answer: "A heavily cross-linked polymer that does not soften on reheating."),
+      PyqItem(question: "What is vulcanisation?", answer: "Cross-linking of rubber with sulfur to improve strength and elasticity."),
+    ],
+
+    "Chemistry in Everyday Life": [
+      PyqItem(question: "What are analgesics?", answer: "Drugs used to relieve pain."),
+      PyqItem(question: "What are antipyretics?", answer: "Drugs used to reduce fever."),
+      PyqItem(question: "What are antibiotics?", answer: "Substances that kill or inhibit microorganisms."),
+      PyqItem(question: "What are antiseptics?", answer: "Chemicals applied to living tissues to prevent microbial infection."),
+      PyqItem(question: "What are disinfectants?", answer: "Chemicals used on non-living surfaces to kill or inhibit microorganisms."),
+      PyqItem(question: "What are antacids?", answer: "Substances that neutralise excess stomach acid."),
+      PyqItem(question: "What are antihistamines?", answer: "Drugs that reduce effects of histamine."),
+      PyqItem(question: "What are tranquilizers?", answer: "Drugs that reduce anxiety and produce a calming effect."),
+      PyqItem(question: "What are soaps?", answer: "Sodium or potassium salts of higher fatty acids."),
+      PyqItem(question: "What are detergents?", answer: "Synthetic cleansing agents, commonly sulfonates or sulfates."),
     ],
   },
 
-  // ============================================================
-  // MATHEMATICS
-  // ============================================================
-
   "Maths": {
     "Relations and Functions": [
-      PyqItem(
-        question: "Define a relation between two sets.",
-        answer:
-            "A relation from set A to set B is a subset of the Cartesian product A × B.",
-      ),
-      PyqItem(
-        question: "Define a function.",
-        answer:
-            "A function from A to B assigns exactly one element of B to every element of A.",
-      ),
-      PyqItem(
-        question: "What is a one-one function?",
-        answer:
-            "A function is one-one if different elements of the domain have different images.",
-      ),
-      PyqItem(
-        question: "What is an onto function?",
-        answer:
-            "A function is onto if every element of its codomain has at least one pre-image.",
-      ),
-      PyqItem(
-        question: "What is a bijective function?",
-        answer:
-            "A function that is both one-one and onto is called bijective.",
-      ),
-      PyqItem(
-        question: "Define composition of functions.",
-        answer:
-            "The composition of f and g is (f ∘ g)(x) = f(g(x)).",
-      ),
-      PyqItem(
-        question: "When does a function have an inverse?",
-        answer:
-            "A function has an inverse when it is bijective.",
-      ),
-      PyqItem(
-        question: "What is the domain of a function?",
-        answer:
-            "The domain is the set of all input values for which the function is defined.",
-      ),
-      PyqItem(
-        question: "What is the range of a function?",
-        answer:
-            "The range is the set of all actual output values obtained from the function.",
-      ),
-      PyqItem(
-        question: "What is an identity function?",
-        answer:
-            "An identity function maps every element to itself, so f(x) = x.",
-      ),
+      PyqItem(question: "Define a relation from A to B.", answer: "A relation is a subset of A × B."),
+      PyqItem(question: "Define a function.", answer: "Every element of the domain is assigned exactly one codomain element."),
+      PyqItem(question: "What is a one-one function?", answer: "Different domain elements have different images."),
+      PyqItem(question: "What is an onto function?", answer: "Every codomain element has at least one preimage."),
+      PyqItem(question: "What is a bijective function?", answer: "A function that is both one-one and onto."),
+      PyqItem(question: "Define composition of functions.", answer: "(f ∘ g)(x) = f(g(x))."),
+      PyqItem(question: "When does a function have an inverse?", answer: "When it is bijective."),
+      PyqItem(question: "What is the domain?", answer: "Set of permitted input values."),
+      PyqItem(question: "What is the range?", answer: "Set of actual output values."),
+      PyqItem(question: "Write inverse of composition.", answer: "(f ∘ g)⁻¹ = g⁻¹ ∘ f⁻¹."),
     ],
 
     "Inverse Trigonometric Functions": [
-      PyqItem(
-        question: "Write the principal value of sin⁻¹x.",
-        answer:
-            "The principal value of sin⁻¹x lies in the interval [-π/2, π/2].",
-      ),
-      PyqItem(
-        question: "Write the principal value of cos⁻¹x.",
-        answer:
-            "The principal value of cos⁻¹x lies in the interval [0, π].",
-      ),
-      PyqItem(
-        question: "Write the principal value of tan⁻¹x.",
-        answer:
-            "The principal value of tan⁻¹x lies in the interval (-π/2, π/2).",
-      ),
-      PyqItem(
-        question: "Evaluate sin⁻¹x + cos⁻¹x.",
-        answer: "For x in [-1,1], sin⁻¹x + cos⁻¹x = π/2.",
-      ),
-      PyqItem(
-        question: "Write the relation between tan⁻¹x and cot⁻¹x.",
-        answer: "tan⁻¹x + cot⁻¹x = π/2 for the standard principal values.",
-      ),
-      PyqItem(
-        question: "Write the principal value range of cot⁻¹x.",
-        answer:
-            "Using the standard NCERT convention, cot⁻¹x lies in (0, π).",
-      ),
-      PyqItem(
-        question: "Evaluate tan⁻¹1.",
-        answer: "tan⁻¹1 = π/4.",
-      ),
-      PyqItem(
-        question: "Evaluate sin⁻¹0.",
-        answer: "sin⁻¹0 = 0.",
-      ),
-      PyqItem(
-        question: "Evaluate cos⁻¹1.",
-        answer: "cos⁻¹1 = 0.",
-      ),
-      PyqItem(
-        question: "Evaluate cos⁻¹0.",
-        answer: "cos⁻¹0 = π/2.",
-      ),
+      PyqItem(question: "Principal value range of sin⁻¹x?", answer: "[-π/2, π/2]."),
+      PyqItem(question: "Principal value range of cos⁻¹x?", answer: "[0, π]."),
+      PyqItem(question: "Principal value range of tan⁻¹x?", answer: "(-π/2, π/2)."),
+      PyqItem(question: "Simplify sin⁻¹x + cos⁻¹x.", answer: "π/2."),
+      PyqItem(question: "Simplify tan⁻¹x + cot⁻¹x.", answer: "π/2 under the standard convention."),
+      PyqItem(question: "Write tan⁻¹x + tan⁻¹y when xy < 1.", answer: "tan⁻¹[(x+y)/(1-xy)]."),
+      PyqItem(question: "What is sin(sin⁻¹x)?", answer: "x."),
+      PyqItem(question: "What is cos(cos⁻¹x)?", answer: "x."),
+      PyqItem(question: "What is tan(tan⁻¹x)?", answer: "x."),
+      PyqItem(question: "Why are principal values needed?", answer: "To make inverse trigonometric functions single-valued."),
     ],
 
     "Matrices": [
-      PyqItem(
-        question: "Define a matrix.",
-        answer:
-            "A matrix is a rectangular arrangement of numbers or elements in rows and columns.",
-      ),
-      PyqItem(
-        question: "What is the order of a matrix?",
-        answer:
-            "The order of a matrix is the number of rows × number of columns.",
-      ),
-      PyqItem(
-        question: "When are two matrices equal?",
-        answer:
-            "Two matrices are equal when they have the same order and corresponding elements are equal.",
-      ),
-      PyqItem(
-        question: "Define a square matrix.",
-        answer:
-            "A matrix having equal numbers of rows and columns is called a square matrix.",
-      ),
-      PyqItem(
-        question: "What is an identity matrix?",
-        answer:
-            "An identity matrix is a square matrix with 1 on the principal diagonal and 0 elsewhere.",
-      ),
-      PyqItem(
-        question: "What is the transpose of a matrix?",
-        answer:
-            "The transpose is obtained by interchanging rows and columns.",
-      ),
-      PyqItem(
-        question: "When is a matrix symmetric?",
-        answer:
-            "A square matrix A is symmetric if Aᵀ = A.",
-      ),
-      PyqItem(
-        question: "Write the condition for a matrix to be invertible.",
-        answer:
-            "A square matrix is invertible if its determinant is non-zero.",
-      ),
-      PyqItem(
-        question: "Write the formula for inverse of a matrix.",
-        answer: "A⁻¹ = adj(A)/|A|, provided |A| ≠ 0.",
-      ),
-      PyqItem(
-        question: "What is a zero matrix?",
-        answer:
-            "A matrix in which every element is zero is called a zero matrix.",
-      ),
+      PyqItem(question: "What is a matrix?", answer: "A rectangular arrangement of elements in rows and columns."),
+      PyqItem(question: "When can two matrices be added?", answer: "They must have the same order."),
+      PyqItem(question: "When is AB defined?", answer: "Columns of A must equal rows of B."),
+      PyqItem(question: "What is the identity matrix?", answer: "A square matrix with 1s on the diagonal and 0s elsewhere."),
+      PyqItem(question: "What is transpose?", answer: "Interchanging rows and columns."),
+      PyqItem(question: "What is a symmetric matrix?", answer: "Aᵀ = A."),
+      PyqItem(question: "What is a skew-symmetric matrix?", answer: "Aᵀ = -A."),
+      PyqItem(question: "Write inverse of a nonsingular matrix.", answer: "A⁻¹ = adj(A)/|A|."),
+      PyqItem(question: "What is a singular matrix?", answer: "A square matrix with determinant zero."),
+      PyqItem(question: "Determinant of identity matrix?", answer: "1."),
     ],
 
     "Determinants": [
-      PyqItem(
-        question: "What is a determinant?",
-        answer:
-            "A determinant is a scalar value associated with a square matrix.",
-      ),
-      PyqItem(
-        question: "What happens to a determinant if two rows are interchanged?",
-        answer:
-            "The sign of the determinant changes.",
-      ),
-      PyqItem(
-        question:
-            "What is the determinant of a matrix having two identical rows?",
-        answer: "Its determinant is zero.",
-      ),
-      PyqItem(
-        question: "Write the determinant of a 2 × 2 matrix.",
-        answer:
-            "For [[a,b],[c,d]], the determinant is ad - bc.",
-      ),
-      PyqItem(
-        question: "What is the determinant of an identity matrix?",
-        answer: "The determinant of an identity matrix is 1.",
-      ),
-      PyqItem(
-        question: "When is a square matrix singular?",
-        answer:
-            "A square matrix is singular when its determinant is zero.",
-      ),
-      PyqItem(
-        question: "Write the relation between determinants of AB, A and B.",
-        answer: "|AB| = |A||B|.",
-      ),
-      PyqItem(
-        question: "What is the determinant of a triangular matrix?",
-        answer:
-            "It is equal to the product of the elements on the principal diagonal.",
-      ),
-      PyqItem(
-        question: "What happens if one row of a determinant is multiplied by k?",
-        answer:
-            "The value of the determinant is multiplied by k.",
-      ),
-      PyqItem(
-        question: "How can determinants be used to find area?",
-        answer:
-            "The area of a triangle can be obtained using the determinant formula involving the coordinates of its vertices.",
-      ),
+      PyqItem(question: "What is a determinant?", answer: "A scalar associated with a square matrix."),
+      PyqItem(question: "What happens when two rows are interchanged?", answer: "The determinant changes sign."),
+      PyqItem(question: "What if two rows are identical?", answer: "The determinant is zero."),
+      PyqItem(question: "What happens if a row is multiplied by k?", answer: "The determinant is multiplied by k."),
+      PyqItem(question: "Write |AB|.", answer: "|AB| = |A||B|."),
+      PyqItem(question: "Write |Aᵀ|.", answer: "|Aᵀ| = |A|."),
+      PyqItem(question: "Determinant of a triangular matrix?", answer: "Product of its diagonal elements."),
+      PyqItem(question: "When is a square matrix invertible?", answer: "When its determinant is non-zero."),
+      PyqItem(question: "Write cofactor formula.", answer: "Cij = (-1)^(i+j)Mij."),
+      PyqItem(question: "What is adjoint?", answer: "Transpose of the cofactor matrix."),
     ],
 
     "Continuity and Differentiability": [
-      PyqItem(
-        question: "Define continuity of a function at x = a.",
-        answer:
-            "A function is continuous at a if lim(x→a) f(x) = f(a).",
-      ),
-      PyqItem(
-        question: "Write the derivative of xⁿ.",
-        answer: "d(xⁿ)/dx = nxⁿ⁻¹.",
-      ),
-      PyqItem(
-        question: "Write the derivative of sin x.",
-        answer: "d(sin x)/dx = cos x.",
-      ),
-      PyqItem(
-        question: "Write the derivative of cos x.",
-        answer: "d(cos x)/dx = -sin x.",
-      ),
-      PyqItem(
-        question: "Write the derivative of eˣ.",
-        answer: "d(eˣ)/dx = eˣ.",
-      ),
-      PyqItem(
-        question: "Write the derivative of ln x.",
-        answer: "d(ln x)/dx = 1/x.",
-      ),
-      PyqItem(
-        question: "State the product rule of differentiation.",
-        answer:
-            "d(uv)/dx = u(dv/dx) + v(du/dx).",
-      ),
-      PyqItem(
-        question: "State the quotient rule of differentiation.",
-        answer:
-            "d(u/v)/dx = [v(du/dx) - u(dv/dx)]/v².",
-      ),
-      PyqItem(
-        question: "State the chain rule.",
-        answer:
-            "If y = f(g(x)), then dy/dx = f'(g(x))g'(x).",
-      ),
-      PyqItem(
-        question: "Is every differentiable function continuous?",
-        answer: "Yes. Differentiability at a point implies continuity at that point.",
-      ),
+      PyqItem(question: "Define continuity at x = a.", answer: "lim x→a f(x) = f(a)."),
+      PyqItem(question: "Condition for differentiability?", answer: "Left and right derivatives must exist and be equal."),
+      PyqItem(question: "Does differentiability imply continuity?", answer: "Yes."),
+      PyqItem(question: "Does continuity imply differentiability?", answer: "No, not necessarily."),
+      PyqItem(question: "Derivative of xⁿ?", answer: "nxⁿ⁻¹."),
+      PyqItem(question: "Derivative of sin x?", answer: "cos x."),
+      PyqItem(question: "Derivative of cos x?", answer: "-sin x."),
+      PyqItem(question: "Derivative of eˣ?", answer: "eˣ."),
+      PyqItem(question: "Derivative of ln x?", answer: "1/x."),
+      PyqItem(question: "State chain rule.", answer: "d[f(g(x))]/dx = f'(g(x))g'(x)."),
     ],
 
     "Application of Derivatives": [
-      PyqItem(
-        question: "What is a critical point?",
-        answer:
-            "A critical point occurs where f'(x) = 0 or f'(x) does not exist, subject to the function being defined.",
-      ),
-      PyqItem(
-        question: "What is the condition for a local maximum?",
-        answer:
-            "A common condition is f'(a) = 0 and f' changes from positive to negative at a.",
-      ),
-      PyqItem(
-        question: "What is the condition for a local minimum?",
-        answer:
-            "A common condition is f'(a) = 0 and f' changes from negative to positive at a.",
-      ),
-      PyqItem(
-        question: "What does a positive derivative indicate?",
-        answer: "The function is increasing on the relevant interval.",
-      ),
-      PyqItem(
-        question: "What does a negative derivative indicate?",
-        answer: "The function is decreasing on the relevant interval.",
-      ),
-      PyqItem(
-        question: "What is the geometrical meaning of derivative?",
-        answer:
-            "The derivative represents the slope of the tangent to the curve at a point.",
-      ),
-      PyqItem(
-        question: "What is the tangent to a curve?",
-        answer:
-            "The tangent is a straight line touching the curve at a point with the same instantaneous slope.",
-      ),
-      PyqItem(
-        question: "What is the normal to a curve?",
-        answer:
-            "The normal is perpendicular to the tangent at the point of contact.",
-      ),
-      PyqItem(
-        question: "What is meant by increasing function?",
-        answer:
-            "A function is increasing on an interval if its value increases as x increases.",
-      ),
-      PyqItem(
-        question: "What is meant by decreasing function?",
-        answer:
-            "A function is decreasing on an interval if its value decreases as x increases.",
-      ),
+      PyqItem(question: "What is a critical point?", answer: "A point where f'(x)=0 or f'(x) does not exist within the domain."),
+      PyqItem(question: "Condition for local maximum?", answer: "Usually f' changes from positive to negative."),
+      PyqItem(question: "Condition for local minimum?", answer: "Usually f' changes from negative to positive."),
+      PyqItem(question: "What is first derivative test?", answer: "It determines extrema using sign changes of f'."),
+      PyqItem(question: "Second derivative condition for maximum?", answer: "If f'(a)=0 and f''(a)<0."),
+      PyqItem(question: "Second derivative condition for minimum?", answer: "If f'(a)=0 and f''(a)>0."),
+      PyqItem(question: "What does f'(x)>0 indicate?", answer: "Function is increasing."),
+      PyqItem(question: "What does f'(x)<0 indicate?", answer: "Function is decreasing."),
+      PyqItem(question: "What is slope of tangent?", answer: "dy/dx."),
+      PyqItem(question: "What is slope of normal?", answer: "-1/(dy/dx) when tangent slope is non-zero."),
     ],
 
     "Integrals": [
-      PyqItem(
-        question: "Evaluate ∫xⁿ dx.",
-        answer: "∫xⁿ dx = xⁿ⁺¹/(n+1) + C, for n ≠ -1.",
-      ),
-      PyqItem(
-        question: "Evaluate ∫1/x dx.",
-        answer: "∫1/x dx = ln|x| + C.",
-      ),
-      PyqItem(
-        question: "Evaluate ∫eˣ dx.",
-        answer: "∫eˣ dx = eˣ + C.",
-      ),
-      PyqItem(
-        question: "Evaluate ∫sin x dx.",
-        answer: "∫sin x dx = -cos x + C.",
-      ),
-      PyqItem(
-        question: "Evaluate ∫cos x dx.",
-        answer: "∫cos x dx = sin x + C.",
-      ),
-      PyqItem(
-        question: "State integration by parts formula.",
-        answer:
-            "∫u dv = uv - ∫v du.",
-      ),
-      PyqItem(
-        question: "What is an indefinite integral?",
-        answer:
-            "An indefinite integral represents a family of antiderivatives and contains an arbitrary constant C.",
-      ),
-      PyqItem(
-        question: "What is a definite integral?",
-        answer:
-            "A definite integral has specified limits and gives a numerical value.",
-      ),
-      PyqItem(
-        question: "State the fundamental relation between differentiation and integration.",
-        answer:
-            "Differentiation and integration are inverse operations under appropriate conditions.",
-      ),
-      PyqItem(
-        question: "What is the constant of integration?",
-        answer:
-            "C is the arbitrary constant added to an indefinite integral.",
-      ),
+      PyqItem(question: "Write ∫xⁿ dx.", answer: "xⁿ⁺¹/(n+1) + C, n ≠ -1."),
+      PyqItem(question: "Write ∫1/x dx.", answer: "ln|x| + C."),
+      PyqItem(question: "Write ∫eˣ dx.", answer: "eˣ + C."),
+      PyqItem(question: "Write ∫sin x dx.", answer: "-cos x + C."),
+      PyqItem(question: "Write ∫cos x dx.", answer: "sin x + C."),
+      PyqItem(question: "State integration by parts.", answer: "∫u dv = uv - ∫v du."),
+      PyqItem(question: "What is substitution in integration?", answer: "Replacing a suitable expression by a new variable to simplify integration."),
+      PyqItem(question: "What is a definite integral?", answer: "An integral evaluated between specified limits."),
+      PyqItem(question: "What is the basic idea of the fundamental theorem?", answer: "Differentiation and integration are inverse operations under suitable conditions."),
+      PyqItem(question: "What does ∫ₐᵇf(x)dx represent?", answer: "Signed area under the curve between the limits."),
     ],
 
     "Application of Integrals": [
-      PyqItem(
-        question: "How is the area under a curve represented using integration?",
-        answer: "The area can be represented by a definite integral.",
-      ),
-      PyqItem(
-        question: "Write the area between a curve and the x-axis.",
-        answer: "Area = ∫ y dx over the required limits when y is non-negative.",
-      ),
-      PyqItem(
-        question: "How is area between two curves calculated?",
-        answer:
-            "Area is obtained by integrating the difference between the upper and lower curves.",
-      ),
-      PyqItem(
-        question: "What is the significance of limits in area calculation?",
-        answer:
-            "The limits specify the interval over which the area is calculated.",
-      ),
-      PyqItem(
-        question: "When should the area be split into separate integrals?",
-        answer:
-            "It should be split when the upper/lower curve changes or the graph crosses the axis.",
-      ),
-      PyqItem(
-        question: "What does a definite integral geometrically represent?",
-        answer:
-            "It can represent the signed area between a curve and the axis over an interval.",
-      ),
-      PyqItem(
-        question: "How can the area between y = f(x) and y = g(x) be found?",
-        answer:
-            "Integrate [f(x) - g(x)] between the points of intersection when f is above g.",
-      ),
-      PyqItem(
-        question: "Why are points of intersection important?",
-        answer:
-            "They commonly provide the limits required for calculating the enclosed area.",
-      ),
-      PyqItem(
-        question: "What happens if a curve lies below the x-axis?",
-        answer:
-            "Its definite integral is negative, so absolute value or appropriate splitting is used for geometrical area.",
-      ),
-      PyqItem(
-        question: "What is an elementary area element in integration?",
-        answer:
-            "A small strip such as y dx can be used as an elementary area element.",
-      ),
+      PyqItem(question: "Area under y=f(x) from a to b?", answer: "A = ∫ₐᵇ f(x)dx when f(x) is non-negative."),
+      PyqItem(question: "Area between two curves?", answer: "Integrate upper function minus lower function."),
+      PyqItem(question: "Write area between f(x) and g(x).", answer: "A = ∫ₐᵇ[f(x)-g(x)]dx when f≥g."),
+      PyqItem(question: "What if curve crosses x-axis?", answer: "Split the interval and add positive areas."),
+      PyqItem(question: "How can area be found with respect to y?", answer: "A = ∫[right x - left x]dy."),
+      PyqItem(question: "Area of a circle using integration?", answer: "Integrating the upper and lower semicircles gives πr²."),
+      PyqItem(question: "How do you find area between curve and y-axis?", answer: "Integrate with suitable x or y limits."),
+      PyqItem(question: "What determines integration limits?", answer: "Intersection points or given boundaries."),
+      PyqItem(question: "What is signed area?", answer: "Area above x-axis is positive and below is negative."),
+      PyqItem(question: "Basic strategy for area problems?", answer: "Sketch, find intersections, identify boundaries and integrate."),
     ],
 
     "Differential Equations": [
-      PyqItem(
-        question: "What is a differential equation?",
-        answer:
-            "An equation involving derivatives or differentials of a dependent variable with respect to an independent variable.",
-      ),
-      PyqItem(
-        question: "What is the order of a differential equation?",
-        answer:
-            "The order is the highest order derivative present in the equation.",
-      ),
-      PyqItem(
-        question: "What is the degree of a differential equation?",
-        answer:
-            "The degree is the power of the highest order derivative after the equation is made polynomial in derivatives.",
-      ),
-      PyqItem(
-        question: "What is a general solution?",
-        answer:
-            "A general solution contains arbitrary constants equal in number to the order of the differential equation.",
-      ),
-      PyqItem(
-        question: "Solve dy/dx = ky conceptually.",
-        answer:
-            "Separating variables gives dy/y = k dx and hence ln|y| = kx + C, so y = Ceᵏˣ.",
-      ),
-      PyqItem(
-        question: "What is a variable separable differential equation?",
-        answer:
-            "It is a differential equation in which variables can be separated so that each side contains only one variable.",
-      ),
-      PyqItem(
-        question: "What is an initial condition?",
-        answer:
-            "An initial condition specifies the value of the dependent variable at a particular value of the independent variable.",
-      ),
-      PyqItem(
-        question: "What is a particular solution?",
-        answer:
-            "A particular solution is obtained from the general solution after determining the arbitrary constants.",
-      ),
-      PyqItem(
-        question: "What is the solution of dy/dx = 0?",
-        answer: "y = C, where C is an arbitrary constant.",
-      ),
-      PyqItem(
-        question: "Why are arbitrary constants present in general solutions?",
-        answer:
-            "They arise because differentiation removes constants and integration introduces them again.",
-      ),
+      PyqItem(question: "What is a differential equation?", answer: "An equation involving derivatives of a dependent variable."),
+      PyqItem(question: "What is order?", answer: "Highest order derivative present."),
+      PyqItem(question: "What is degree?", answer: "Power of the highest order derivative after making the equation polynomial in derivatives."),
+      PyqItem(question: "What is a general solution?", answer: "A solution containing arbitrary constants."),
+      PyqItem(question: "What is a particular solution?", answer: "A solution obtained after applying given conditions."),
+      PyqItem(question: "Solve dy/dx = ky conceptually.", answer: "y = Ce^(kx)."),
+      PyqItem(question: "What is variable separation?", answer: "Rearranging variables so each side contains one variable, then integrating."),
+      PyqItem(question: "What is a first-order differential equation?", answer: "One whose highest derivative is first order."),
+      PyqItem(question: "What is a linear differential equation?", answer: "An equation linear in the dependent variable and its derivatives."),
+      PyqItem(question: "Why are arbitrary constants introduced?", answer: "Integration produces constants."),
     ],
 
     "Vector Algebra": [
-      PyqItem(
-        question: "Define a vector.",
-        answer:
-            "A vector is a quantity having both magnitude and direction.",
-      ),
-      PyqItem(
-        question: "Write the magnitude of vector a = a₁i + a₂j + a₃k.",
-        answer:
-            "|a| = √(a₁² + a₂² + a₃²).",
-      ),
-      PyqItem(
-        question: "Write the formula for dot product.",
-        answer:
-            "a·b = |a||b|cosθ.",
-      ),
-      PyqItem(
-        question: "Write the formula for cross product magnitude.",
-        answer:
-            "|a×b| = |a||b|sinθ.",
-      ),
-      PyqItem(
-        question: "When are two vectors perpendicular?",
-        answer:
-            "Two non-zero vectors are perpendicular when their dot product is zero.",
-      ),
-      PyqItem(
-        question: "When are two vectors parallel?",
-        answer:
-            "Two non-zero vectors are parallel when their cross product is zero.",
-      ),
-      PyqItem(
-        question: "What is a unit vector?",
-        answer:
-            "A unit vector is a vector having magnitude one.",
-      ),
-      PyqItem(
-        question: "Write the standard unit vectors.",
-        answer: "The standard unit vectors are i, j and k.",
-      ),
-      PyqItem(
-        question: "What is the scalar triple product?",
-        answer:
-            "The scalar triple product of a, b and c is a·(b×c).",
-      ),
-      PyqItem(
-        question: "What is the vector triple product?",
-        answer:
-            "The vector triple product can be written as a×(b×c) = b(a·c) - c(a·b).",
-      ),
+      PyqItem(question: "Define a vector.", answer: "A quantity having magnitude and direction."),
+      PyqItem(question: "Write magnitude of vector a.", answer: "|a| = √(a·a)."),
+      PyqItem(question: "Write dot product.", answer: "a·b = |a||b|cosθ."),
+      PyqItem(question: "When are two vectors perpendicular?", answer: "Their dot product is zero."),
+      PyqItem(question: "Write cross-product magnitude.", answer: "|a×b| = |a||b|sinθ."),
+      PyqItem(question: "When are two vectors parallel?", answer: "Their cross product is zero."),
+      PyqItem(question: "What is a unit vector?", answer: "A vector of magnitude one."),
+      PyqItem(question: "Write vector from A to B.", answer: "AB = position vector of B minus position vector of A."),
+      PyqItem(question: "What is scalar projection of a on b?", answer: "(a·b)/|b|."),
+      PyqItem(question: "What is vector projection of a on b?", answer: "[(a·b)/|b|²]b."),
     ],
 
     "Three Dimensional Geometry": [
-      PyqItem(
-        question: "Write the distance between two points in three dimensions.",
-        answer:
-            "For points (x₁,y₁,z₁) and (x₂,y₂,z₂), distance = √[(x₂-x₁)² + (y₂-y₁)² + (z₂-z₁)²].",
-      ),
-      PyqItem(
-        question: "What are direction cosines?",
-        answer:
-            "Direction cosines are the cosines of the angles made by a line with the positive coordinate axes.",
-      ),
-      PyqItem(
-        question: "Write the relation between direction cosines.",
-        answer: "l² + m² + n² = 1.",
-      ),
-      PyqItem(
-        question: "Write the equation of a line in vector form.",
-        answer:
-            "r = a + λb, where a is a position vector and b is a direction vector.",
-      ),
-      PyqItem(
-        question: "What is the angle between two lines?",
-        answer:
-            "It can be found using the dot product of their direction vectors.",
-      ),
-      PyqItem(
-        question: "When are two lines perpendicular?",
-        answer:
-            "Their direction vectors are perpendicular, so their dot product is zero.",
-      ),
-      PyqItem(
-        question: "When are two lines parallel?",
-        answer:
-            "Their direction vectors are parallel or proportional.",
-      ),
-      PyqItem(
-        question: "What is the shortest distance between skew lines?",
-        answer:
-            "It is the length of the common perpendicular between the two skew lines.",
-      ),
-      PyqItem(
-        question: "What is a plane?",
-        answer:
-            "A plane is a flat two-dimensional surface extending in three-dimensional space.",
-      ),
-      PyqItem(
-        question: "Write the general equation of a plane.",
-        answer:
-            "The general equation is ax + by + cz + d = 0.",
-      ),
+      PyqItem(question: "Write distance between two 3D points.", answer: "√[(x₂-x₁)²+(y₂-y₁)²+(z₂-z₁)²]."),
+      PyqItem(question: "Write section formula in 3D.", answer: "Coordinates are weighted averages in the ratio m:n."),
+      PyqItem(question: "What are direction cosines?", answer: "Cosines of angles a line makes with the coordinate axes."),
+      PyqItem(question: "Relation among direction cosines?", answer: "l² + m² + n² = 1."),
+      PyqItem(question: "Equation of a line in vector form?", answer: "r = a + λb."),
+      PyqItem(question: "Shortest distance between skew lines?", answer: "|(a₂-a₁)·(b₁×b₂)|/|b₁×b₂|."),
+      PyqItem(question: "When are two lines parallel?", answer: "Their direction vectors are proportional."),
+      PyqItem(question: "When are two lines perpendicular?", answer: "Their direction vectors have zero dot product."),
+      PyqItem(question: "How do you find angle between two lines?", answer: "Use the dot product of their direction vectors."),
+      PyqItem(question: "Write plane equation in normal form.", answer: "r·n = d."),
     ],
 
     "Linear Programming": [
-      PyqItem(
-        question: "What is a linear programming problem?",
-        answer:
-            "It is an optimisation problem involving a linear objective function and linear constraints.",
-      ),
-      PyqItem(
-        question: "What is the objective function?",
-        answer:
-            "The objective function is the linear function that is maximised or minimised.",
-      ),
-      PyqItem(
-        question: "What are constraints?",
-        answer:
-            "Constraints are the linear inequalities or equations restricting the variables.",
-      ),
-      PyqItem(
-        question: "What is the feasible region?",
-        answer:
-            "The feasible region is the common region satisfying all constraints.",
-      ),
-      PyqItem(
-        question: "What is an optimal solution?",
-        answer:
-            "It is a feasible solution giving the maximum or minimum value of the objective function.",
-      ),
-      PyqItem(
-        question: "What is the corner point method?",
-        answer:
-            "The objective function is evaluated at the corner points of the feasible region to determine the optimum.",
-      ),
-      PyqItem(
-        question: "What is a bounded feasible region?",
-        answer:
-            "A feasible region that is limited in all relevant directions is called bounded.",
-      ),
-      PyqItem(
-        question: "What is an unbounded feasible region?",
-        answer:
-            "A feasible region that extends indefinitely in at least one direction is unbounded.",
-      ),
-      PyqItem(
-        question: "What is a redundant constraint?",
-        answer:
-            "A constraint that does not affect the feasible region because it is already implied by other constraints.",
-      ),
-      PyqItem(
-        question: "Can the optimum occur at more than one point?",
-        answer:
-            "Yes. In some cases every point on a line segment between two optimal corner points gives the same optimum.",
-      ),
+      PyqItem(question: "What is a linear programming problem?", answer: "An optimisation problem with a linear objective function and linear constraints."),
+      PyqItem(question: "What is the objective function?", answer: "The linear expression to be maximised or minimised."),
+      PyqItem(question: "What are constraints?", answer: "Linear inequalities or equations restricting variables."),
+      PyqItem(question: "What is feasible region?", answer: "Set of points satisfying all constraints."),
+      PyqItem(question: "What is a corner point?", answer: "A vertex of the feasible region."),
+      PyqItem(question: "State corner point method.", answer: "Evaluate objective function at relevant corner points."),
+      PyqItem(question: "What is an unbounded feasible region?", answer: "A feasible region extending indefinitely."),
+      PyqItem(question: "Can optimum occur along an edge?", answer: "Yes, multiple points on an edge can have the same optimum value."),
+      PyqItem(question: "What is a non-negativity restriction?", answer: "Conditions such as x ≥ 0 and y ≥ 0."),
+      PyqItem(question: "What is an infeasible problem?", answer: "A problem having no point satisfying all constraints."),
     ],
 
     "Probability": [
-      PyqItem(
-        question: "Define conditional probability.",
-        answer:
-            "P(A|B) = P(A ∩ B)/P(B), provided P(B) ≠ 0.",
-      ),
-      PyqItem(
-        question: "State Bayes' theorem.",
-        answer:
-            "Bayes' theorem relates conditional probabilities and can be written as P(Aᵢ|B) = P(Aᵢ)P(B|Aᵢ) / ΣP(Aⱼ)P(B|Aⱼ).",
-      ),
-      PyqItem(
-        question: "What are independent events?",
-        answer:
-            "Events A and B are independent if P(A ∩ B) = P(A)P(B).",
-      ),
-      PyqItem(
-        question: "What are mutually exclusive events?",
-        answer:
-            "Two events are mutually exclusive if they cannot occur together, so P(A ∩ B) = 0.",
-      ),
-      PyqItem(
-        question: "What is the probability of an impossible event?",
-        answer: "The probability is 0.",
-      ),
-      PyqItem(
-        question: "What is the probability of a sure event?",
-        answer: "The probability is 1.",
-      ),
-      PyqItem(
-        question: "Write the complement rule.",
-        answer: "P(A') = 1 - P(A).",
-      ),
-      PyqItem(
-        question: "Write the addition theorem of probability.",
-        answer:
-            "P(A ∪ B) = P(A) + P(B) - P(A ∩ B).",
-      ),
-      PyqItem(
-        question: "Write the multiplication theorem.",
-        answer:
-            "P(A ∩ B) = P(A)P(B|A).",
-      ),
-      PyqItem(
-        question: "What is a random variable?",
-        answer:
-            "A random variable assigns numerical values to outcomes of a random experiment.",
-      ),
+      PyqItem(question: "Define conditional probability.", answer: "P(A|B) = P(A∩B)/P(B), P(B)>0."),
+      PyqItem(question: "State multiplication theorem.", answer: "P(A∩B) = P(A)P(B|A)."),
+      PyqItem(question: "When are events independent?", answer: "P(A∩B) = P(A)P(B)."),
+      PyqItem(question: "State Bayes' theorem.", answer: "P(Ai|B) = P(Ai)P(B|Ai)/ΣP(Aj)P(B|Aj)."),
+      PyqItem(question: "What is a random variable?", answer: "A variable assigning numerical values to outcomes of a random experiment."),
+      PyqItem(question: "What is a probability distribution?", answer: "Possible values of a random variable with their probabilities."),
+      PyqItem(question: "Mean of a discrete random variable?", answer: "E(X) = Σxi pi."),
+      PyqItem(question: "Write variance.", answer: "Var(X) = E(X²) - [E(X)]²."),
+      PyqItem(question: "What is binomial distribution?", answer: "Distribution of successes in n independent Bernoulli trials."),
+      PyqItem(question: "Write binomial probability.", answer: "P(X=r) = ⁿCᵣ pʳ(1-p)ⁿ⁻ʳ."),
     ],
   },
 };
