@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'subject_screen.dart';
 import 'revision_screen.dart';
 import 'stats_screen.dart';
@@ -7,16 +6,17 @@ import 'stats_screen.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  static const Color backgroundColor = Color(0xFF080808);
-  static const Color cardColor = Color(0xFF19191D);
-  static const Color accentColor = Color(0xFFFF4D5A);
+  static const Color backgroundColor = Color(0xFF080B14);
+  static const Color cardColor = Color(0xFF121827);
+  static const Color accentColor = Color(0xFF8B5CF6);
+  static const Color cyanColor = Color(0xFF22D3EE);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: accentColor,
+        backgroundColor: const Color(0xFF0D1220),
         foregroundColor: Colors.white,
         elevation: 0,
         title: const Text(
@@ -42,17 +42,14 @@ class HomeScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-
               const SizedBox(height: 8),
-
               const Text(
-                'Learn • Practice • Achieve',
+                'Learn • Practice • Revise • Achieve',
                 style: TextStyle(
-                  color: Colors.white70,
+                  color: Colors.white60,
                   fontSize: 16,
                 ),
               ),
-
               const SizedBox(height: 25),
 
               _buildMainCard(
@@ -77,7 +74,7 @@ class HomeScreen extends StatelessWidget {
               _buildMainCard(
                 context,
                 title: 'Revision',
-                subtitle: 'Revise important topics quickly',
+                subtitle: 'Quickly revise important chapters',
                 icon: Icons.replay_rounded,
                 onTap: () {
                   Navigator.push(
@@ -106,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 25),
+              const SizedBox(height: 28),
 
               const Text(
                 'Subjects',
@@ -135,9 +132,10 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 12),
 
+              // IMPORTANT: Maths, not Mathematics.
               _buildSubjectCard(
                 context,
-                'Mathematics',
+                'Maths',
                 Icons.calculate_rounded,
               ),
             ],
@@ -161,16 +159,20 @@ class HomeScreen extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: cardColor,
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFF171D31),
+              Color(0xFF101521),
+            ],
+          ),
           borderRadius: BorderRadius.circular(22),
           border: Border.all(
-            color: accentColor,
-            width: 1.5,
+            color: accentColor.withOpacity(0.55),
           ),
           boxShadow: [
             BoxShadow(
-              color: accentColor.withOpacity(0.18),
-              blurRadius: 14,
+              color: accentColor.withOpacity(0.12),
+              blurRadius: 20,
               spreadRadius: 1,
             ),
           ],
@@ -181,18 +183,21 @@ class HomeScreen extends StatelessWidget {
               width: 58,
               height: 58,
               decoration: BoxDecoration(
-                color: accentColor.withOpacity(0.15),
+                gradient: const LinearGradient(
+                  colors: [
+                    Color(0xFF8B5CF6),
+                    Color(0xFF5B21B6),
+                  ],
+                ),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Icon(
                 icon,
-                color: accentColor,
-                size: 32,
+                color: Colors.white,
+                size: 31,
               ),
             ),
-
             const SizedBox(width: 16),
-
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,24 +210,21 @@ class HomeScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                   const SizedBox(height: 5),
-
                   Text(
                     subtitle,
                     style: const TextStyle(
-                      color: Colors.white70,
+                      color: Colors.white60,
                       fontSize: 14,
                     ),
                   ),
                 ],
               ),
             ),
-
             const Icon(
               Icons.arrow_forward_ios_rounded,
-              color: Colors.white60,
-              size: 20,
+              color: Colors.white54,
+              size: 18,
             ),
           ],
         ),
@@ -257,20 +259,17 @@ class HomeScreen extends StatelessWidget {
           color: cardColor,
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
-            color: accentColor.withOpacity(0.8),
-            width: 1.2,
+            color: accentColor.withOpacity(0.4),
           ),
         ),
         child: Row(
           children: [
             Icon(
               icon,
-              color: accentColor,
+              color: cyanColor,
               size: 30,
             ),
-
             const SizedBox(width: 15),
-
             Expanded(
               child: Text(
                 subject,
@@ -281,10 +280,9 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-
             const Icon(
               Icons.arrow_forward_ios_rounded,
-              color: Colors.white54,
+              color: Colors.white38,
               size: 18,
             ),
           ],
